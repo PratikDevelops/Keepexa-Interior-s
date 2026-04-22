@@ -8,7 +8,7 @@ import Icon from '@/components/ui/AppIcon';
 
 const testimonials = [
 {
-  quote: "ShuddhFrame transformed our Bandra apartment. The acoustic difference was immediately noticeable — we live 50 metres from the Western Express Highway and now barely hear it. The finish looks absolutely premium.",
+  quote: "Keepexa Interior's transformed our Bandra apartment. The acoustic difference was immediately noticeable — we live 50 metres from the Western Express Highway and now barely hear it. The finish looks absolutely premium.",
   name: 'Priya Venkataraman',
   role: 'Homeowner, Mumbai',
   avatar: "https://img.rocket.new/generatedImages/rocket_gen_img_1712f5c9a-1774901987372.png",
@@ -26,7 +26,7 @@ const testimonials = [
   detail: '8 sliding windows · Anthracite Grey'
 },
 {
-  quote: "We specified ShuddhFrame across a 56-unit residential project in Gurugram. Delivery was on schedule, the thermal performance exceeded our ECBC calculations, and the site team were professional throughout. Will specify again.",
+  quote: "We specified Keepexa Interior's across a 56-unit residential project in Gurugram. Delivery was on schedule, the thermal performance exceeded our ECBC calculations, and the site team were professional throughout. Will specify again.",
   name: 'Kavitha Nair',
   role: 'Project Architect, Delhi NCR',
   avatar: "https://img.rocket.new/generatedImages/rocket_gen_img_134f328e7-1763295186862.png",
@@ -112,7 +112,7 @@ export default function TestimonialsSection() {
           <div className="relative z-10 flex flex-col items-center gap-5 sm:gap-6">
             <div className="flex -space-x-3 mb-2">
               {[
-              { src: "https://img.rocket.new/generatedImages/rocket_gen_img_1a257243a-1767409969984.png", alt: 'Satisfied ShuddhFrame customer' },
+              { src: "https://img.rocket.new/generatedImages/rocket_gen_img_1a257243a-1767409969984.png", alt: 'Satisfied Keepexa Interiors customer' },
               { src: "https://img.rocket.new/generatedImages/rocket_gen_img_12d6a7fd1-1772128506433.png", alt: 'Happy homeowner after installation' },
               { src: "https://img.rocket.new/generatedImages/rocket_gen_img_11b9b7153-1772991940916.png", alt: 'Pleased customer with new windows' }]?.
               map((img, i) =>

@@ -26,7 +26,7 @@ const features = [
   headline: 'Cool interiors. Lower electricity bills.',
   stat: '₹28,000',
   statLabel: 'avg. annual AC saving',
-  body: 'ShuddhFrame windows achieve SHGC values as low as 0.25 — blocking up to 75% of solar heat gain. Our thermally broken frames eliminate heat bridging, keeping interiors cool even in 45°C Indian summers without overworking your AC.',
+  body: 'Keepexa Interiors windows achieve SHGC values as low as 0.25 — blocking up to 75% of solar heat gain. Our thermally broken frames eliminate heat bridging, keeping interiors cool even in 45°C Indian summers without overworking your AC.',
   detail: 'SHGC from 0.25 · BEE 5-Star rated · Argon-filled cavities · Low-E coating · UV protection',
   icon: 'FireIcon',
   image: "https://img.rocket.new/generatedImages/rocket_gen_img_1505ab465-1776185817997.png",
@@ -145,7 +145,7 @@ export default function FeaturesStorytelling() {
             Every detail engineered to perform.
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground mt-4 max-w-xl mx-auto leading-relaxed">
-            Three performance pillars that set ShuddhFrame apart — engineered specifically for India's demanding climate.
+            Three performance pillars that set Keepexa Interior's apart — engineered specifically for India's demanding climate.
           </p>
         </motion.div>
 

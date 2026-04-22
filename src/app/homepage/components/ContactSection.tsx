@@ -43,7 +43,7 @@ export default function ContactSection() {
             <div className="flex flex-col gap-3 sm:gap-4">
               {[
                 { icon: 'PhoneIcon', label: 'Phone', value: '+91 20 4890 7700', sub: 'Mon–Sat 9am–7pm IST' },
-                { icon: 'EnvelopeIcon', label: 'Email', value: 'namaste@shuddhframe.in', sub: 'Response within 2 hours' },
+                { icon: 'EnvelopeIcon', label: 'Email', value: 'namaste@Keepexa Interiors.in', sub: 'Response within 2 hours' },
                 { icon: 'MapPinIcon', label: 'Head Office', value: 'Plot 14, Kandivali, Mumbai, Maharashtra 400067', sub: 'Open Mon–Sat, appointment preferred' },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-3 sm:gap-4 p-4 rounded-2xl bg-secondary/60 border border-border/50">

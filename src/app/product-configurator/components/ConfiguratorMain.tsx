@@ -254,7 +254,7 @@ function QuoteForm({ config, price, onClose, category }: { config: Config; price
               <div>
                 <h3 className="text-xl font-800 text-foreground">Quote request sent!</h3>
                 <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                  Dhanyavaad, {form.name || 'there'}! A ShuddhFrame specialist will contact you within 2 hours to confirm your quote and arrange a free home survey in {form.city || 'your city'}.
+                  Dhanyavaad, {form.name || 'there'}! A Keepexa Interior's specialist will contact you within 2 hours to confirm your quote and arrange a free home survey in {form.city || 'your city'}.
                 </p>
               </div>
               <div className="w-full p-4 rounded-2xl bg-secondary/60 border border-border/60 text-left">

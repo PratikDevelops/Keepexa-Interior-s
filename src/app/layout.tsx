@@ -17,8 +17,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: 'ShuddhFrame — Engineered UPVC Windows',
-  description: 'ShuddhFrame crafts premium UPVC windows delivering acoustic silence, thermal efficiency, and architectural elegance for modern UK homes.',
+  title: 'Keepexa Interiors — Engineered UPVC Windows',
+  description: 'Keepexa Interiors crafts premium UPVC windows delivering acoustic silence, thermal efficiency, and architectural elegance for modern UK homes.',
   icons: {
     icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
   },

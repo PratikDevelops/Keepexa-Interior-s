@@ -10,7 +10,7 @@ const steps = [
 {
   num: '01',
   title: 'Free Home Survey',
-  desc: 'A ShuddhFrame specialist visits your home to measure, assess, and recommend the right product for your space — available across all major Indian cities.',
+  desc: 'A Keepexa Interiors specialist visits your home to measure, assess, and recommend the right product for your space — available across all major Indian cities.',
   icon: 'HomeIcon'
 },
 {
@@ -63,7 +63,7 @@ export default function AboutSection() {
               15 years of getting windows right in India.
             </h2>
             <p className="text-base text-muted-foreground leading-relaxed">
-              ShuddhFrame was founded in Pune in 2010 by a team of building engineers frustrated by the gap between what UPVC windows could achieve and what was being installed in Indian homes. We set out to close that gap.
+              Keepexa Interior's was founded in Pune in 2010 by a team of building engineers frustrated by the gap between what UPVC windows could achieve and what was being installed in Indian homes. We set out to close that gap.
             </p>
             <p className="text-base text-muted-foreground leading-relaxed">
               Today we manufacture and install across India — Mumbai, Delhi, Bengaluru, Hyderabad, Chennai, and beyond — maintaining direct control from extrusion to installation. No subcontractors, no compromises. Every window leaves our factory with a named quality check on record.
@@ -93,7 +93,7 @@ export default function AboutSection() {
             
             <AppImage
               src="https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png"
-              alt="ShuddhFrame installation team working professionally on UPVC window fitting, clean white coveralls, bright workshop environment"
+              alt="Keepexa Interior's installation team working professionally on UPVC window fitting, clean white coveralls, bright workshop environment"
               fill
               className="object-cover" />
             
