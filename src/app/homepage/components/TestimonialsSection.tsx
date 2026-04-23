@@ -134,7 +134,7 @@ export default function TestimonialsSection() {
             <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
               <Link
                 href="/product-configurator"
-                className="bg-white text-primary font-700 px-6 sm:px-8 py-3.5 rounded-xl hover:bg-accent/20 hover:text-white transition-all duration-300 text-sm flex items-center gap-2 justify-center">
+                className="bg-white text-primary font-700 px-6 sm:px-8 py-3.5 rounded-xl hover:bg-accent/20 hover:text-black transition-all duration-300 text-sm flex items-center gap-2 justify-center">
                 Start Configuring
                 <Icon name="ArrowRightIcon" size={16} />
               </Link>

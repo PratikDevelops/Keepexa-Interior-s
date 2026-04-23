@@ -2,33 +2,18 @@
 
 import React, { useRef, useState } from 'react';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 
 /* ─────────────────────────────────────────────
-   Minimal stand-ins — replace with your actual
-   AppImage / Icon imports
+   AppImage / Icon
 ───────────────────────────────────────────── */
-function AppImage({
-  src,
-  alt,
-  fill,
-  className,
-}: {
-  src: string;
-  alt: string;
-  fill?: boolean;
-  className?: string;
-}) {
+function AppImage({ src, alt, fill, className }: { src: string; alt: string; fill?: boolean; className?: string }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={src}
-      alt={alt}
-      className={[fill ? 'absolute inset-0 w-full h-full' : '', className].join(' ')}
-    />
+    <img src={src} alt={alt} className={[fill ? 'absolute inset-0 w-full h-full' : '', className].join(' ')} />
   );
 }
+
 function Icon({ name, size = 16, className = '' }: { name: string; size?: number; className?: string }) {
   const icons: Record<string, React.ReactNode> = {
     ArrowRightIcon: (
@@ -68,11 +53,6 @@ function Icon({ name, size = 16, className = '' }: { name: string; size?: number
         <path d="M2 9l6 3.5L14 9" strokeLinecap="round" />
       </svg>
     ),
-    StarIcon: (
-      <svg width={size} height={size} viewBox="0 0 12 12" fill="currentColor">
-        <path d="M6 1l1.24 2.52L10 3.93l-2 1.95.47 2.76L6 7.27 3.53 8.64 4 5.88 2 3.93l2.76-.41z" />
-      </svg>
-    ),
     WindIcon: (
       <svg width={size} height={size} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
         <path d="M2 8h8a2 2 0 100-4" strokeLinecap="round" />
@@ -86,11 +66,7 @@ function Icon({ name, size = 16, className = '' }: { name: string; size?: number
       </svg>
     ),
   };
-  return (
-    <span className={`inline-flex items-center justify-center ${className}`}>
-      {icons[name] ?? null}
-    </span>
-  );
+  return <span className={`inline-flex items-center justify-center ${className}`}>{icons[name] ?? null}</span>;
 }
 
 /* ─────────────────────────────────────────────
@@ -475,16 +451,16 @@ Ideal for utility rooms, bathrooms, stairwells, kitchens, and any space where pe
    Badge styles
 ───────────────────────────────────────────── */
 const badgeStyles: Record<string, string> = {
-  popular: 'bg-primary/12 text-primary border-primary/20',
-  new:     'bg-accent/12 text-accent border-accent/20',
-  premium: 'bg-amber-500/12 text-amber-600 border-amber-500/20',
-  eco:     'bg-emerald-500/12 text-emerald-600 border-emerald-500/20',
+  popular: 'bg-primary/10 text-primary border-primary/20',
+  new: 'bg-accent/10 text-accent border-accent/20',
+  premium: 'bg-amber-500/10 text-amber-600 border-amber-500/20',
+  eco: 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20',
 };
 
 function Badge({ label, variant }: { label: string; variant: string }) {
   return (
-    <span className={`inline-flex items-center gap-1.5 text-xs font-700 px-2.5 py-1 rounded-xl border backdrop-blur-sm ${badgeStyles[variant]}`}>
-      <span className="w-1.5 h-1.5 rounded-full bg-current opacity-60 shrink-0" />
+    <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full border ${badgeStyles[variant]}`}>
+      <span className="w-1.5 h-1.5 rounded-full bg-current opacity-70 shrink-0" />
       {label}
     </span>
   );
@@ -503,39 +479,40 @@ function Stars({ rating }: { rating: number }) {
 }
 
 /* ─────────────────────────────────────────────
-   Related product mini-card
+   Related Card
 ───────────────────────────────────────────── */
 function RelatedCard({ product }: { product: ProductDetail }) {
   const [hovered, setHovered] = useState(false);
   return (
     <Link
       href={product.href}
-      className="block rounded-2xl border border-border/60 bg-card overflow-hidden transition-all duration-300"
+      className="group block rounded-2xl border border-border/60 bg-card overflow-hidden"
       style={{
-        boxShadow: hovered ? '0 16px 40px -8px rgba(0,0,0,0.12)' : '0 2px 8px -2px rgba(0,0,0,0.07)',
-        transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
+        boxShadow: hovered ? '0 20px 48px -8px rgba(0,0,0,0.14)' : '0 2px 8px -2px rgba(0,0,0,0.06)',
+        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+        transition: 'box-shadow 0.3s ease, transform 0.3s ease',
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="relative h-32 overflow-hidden bg-secondary/30">
+      <div className="relative h-36 overflow-hidden bg-secondary/30">
         <AppImage
           src={product.image}
           alt={product.imageAlt}
           fill
-          className={`object-cover transition-transform duration-500 ${hovered ? 'scale-[1.06]' : 'scale-100'}`}
+          className={`object-cover transition-transform duration-700 ease-out ${hovered ? 'scale-[1.08]' : 'scale-100'}`}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
-        <span className="absolute top-2.5 left-2.5 text-[10px] font-600 text-foreground bg-background/80 backdrop-blur-sm px-2 py-0.5 rounded-lg border border-border/30">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+        <span className="absolute top-3 left-3 text-[10px] font-semibold text-white bg-black/40 backdrop-blur-sm px-2 py-0.5 rounded-md">
           {product.category}
         </span>
       </div>
       <div className="p-4">
-        <p className="text-sm font-700 text-foreground leading-tight">{product.name}</p>
+        <p className="text-sm font-bold text-foreground leading-tight">{product.name}</p>
         <p className="text-xs text-muted-foreground mt-1 leading-snug line-clamp-2">{product.tagline}</p>
         <div className="flex items-center justify-between mt-3 pt-3 border-t border-border/40">
-          <p className="text-sm font-800 text-foreground">{product.startingPrice}</p>
-          <span className="text-xs text-primary font-600 flex items-center gap-1">
+          <p className="text-sm font-bold text-foreground">{product.startingPrice}</p>
+          <span className="text-xs text-primary font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
             View <Icon name="ArrowRightIcon" size={11} />
           </span>
         </div>
@@ -545,32 +522,26 @@ function RelatedCard({ product }: { product: ProductDetail }) {
 }
 
 /* ─────────────────────────────────────────────
-   Main page
+   Main component
 ───────────────────────────────────────────── */
-export default function ProductDetailPage({ params: pageParams }: { params?: { slug?: "products/tilt-turn" } }) {
-  // App Router passes params as props; useParams() is the client-side fallback
-  const routeParams = useParams<{ slug: string }>();
-  const slug = pageParams?.slug ?? routeParams?.slug ?? '';
-
+export default function ProductDetailPage({ slug }: { slug: string }) {
   const product = allProducts.find((p) => p.slug === slug);
 
-  const heroRef  = useRef<HTMLDivElement>(null);
-  const bodyRef  = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
   const heroView = useInView(heroRef, { once: true });
-  const bodyView = useInView(bodyRef, { once: true, margin: '-80px' });
+  const bodyView = useInView(bodyRef, { once: true, margin: '-60px' });
 
   const [tab, setTab] = useState<'features' | 'specs'>('features');
-  const [hoverImage, setHoverImage] = useState(false);
 
   if (!product) {
     return (
       <main className="min-h-screen bg-background flex flex-col items-center justify-center gap-4 px-4">
-        <p className="text-lg font-700 text-foreground">Product not found</p>
-        {/* Debug: remove this once routing is confirmed */}
+        <p className="text-lg font-bold text-foreground">Product not found</p>
         <p className="text-xs text-muted-foreground font-mono bg-secondary px-3 py-1 rounded">
-          slug received: &quot;{slug}&quot;
+          slug: &quot;{slug}&quot;
         </p>
-        <Link href="/#products" className="btn-primary">
+        <Link href="/#products" className="btn-primary inline-flex items-center gap-2">
           <Icon name="ArrowLeftIcon" size={14} />
           Back to Products
         </Link>
@@ -583,136 +554,144 @@ export default function ProductDetailPage({ params: pageParams }: { params?: { s
     .filter(Boolean) as ProductDetail[];
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen mt-[100px] bg-background">
 
-      {/* ── Breadcrumb nav ── */}
-      <nav className="border-b border-border/50 bg-background/80 backdrop-blur-sm sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-12 flex items-center gap-2 text-xs text-muted-foreground">
+      {/* ── Breadcrumb ── */}
+      {/* <div className="bg-secondary/40 border-b mt-[10px] border-border/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center gap-2 text-xs text-muted-foreground">
           <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
-          <span className="opacity-40">/</span>
+          <span className="opacity-30">/</span>
           <Link href="/#products" className="hover:text-foreground transition-colors">Products</Link>
-          <span className="opacity-40">/</span>
-          <span className="text-foreground font-600">{product.name}</span>
+          <span className="opacity-30">/</span>
+          <span className="text-foreground font-medium">{product.name}</span>
         </div>
-      </nav>
+      </div> */}
 
-      {/* ── Hero ── */}
-      <section ref={heroRef} className="relative overflow-hidden">
-        {/* Background image full bleed */}
-        <div className="absolute inset-0 h-[600px] sm:h-[640px]"
-          onMouseEnter={() => setHoverImage(true)}
-          onMouseLeave={() => setHoverImage(false)}
-        >
+      {/* ── HERO ── */}
+      <section ref={heroRef} className="relative overflow-hidden bg-background">
+
+        {/* Full-bleed background image */}
+        <div className="absolute inset-0 h-[520px] sm:h-[580px] lg:h-[640px]">
           <AppImage
             src={product.image}
             alt={product.imageAlt}
             fill
-            className={`object-cover transition-transform duration-1000 ease-out ${hoverImage ? 'scale-[1.03]' : 'scale-100'}`}
+            className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+          {/* Layered gradients for text legibility */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background/98 via-background/80 to-background/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
         </div>
 
-        {/* Ruled lines */}
-        <div className="absolute top-8 left-0 right-0 h-px bg-border/20 pointer-events-none" />
+        {/* Hero content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 py-12 sm:py-16 lg:py-20 items-center min-h-[520px] sm:min-h-[580px] lg:min-h-[640px]">
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-24 sm:pt-16 sm:pb-28">
-          {/* Back link */}
-          <motion.div
-            initial={{ opacity: 0, x: -12 }}
-            animate={heroView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5 }}
-          >
-            <Link
-              href="/#products"
-              className="inline-flex items-center gap-2 text-xs font-600 text-muted-foreground hover:text-foreground transition-colors mb-8"
-            >
-              <Icon name="ArrowLeftIcon" size={13} />
-              All Products
-            </Link>
-          </motion.div>
+            {/* Left: product info */}
+            <div className="lg:col-span-7 flex flex-col justify-center gap-5">
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
-            {/* Left: title block */}
-            <div className="md:col-span-7 lg:col-span-6">
+              {/* Category + Badge row */}
               <motion.div
-                className="flex items-center gap-2 flex-wrap mb-4"
+                className="flex items-center gap-2.5 flex-wrap"
                 initial={{ opacity: 0, y: 16 }}
                 animate={heroView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.05 }}
+                transition={{ duration: 0.5, delay: 0.05 }}
               >
-                <span className="text-xs font-600 text-muted-foreground bg-secondary/80 px-2.5 py-1 rounded-lg border border-border/50">
+                <Link
+                  href="/#products"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors bg-secondary/80 border border-border/50 px-3 py-1.5 rounded-full"
+                >
+                  <Icon name="ArrowLeftIcon" size={11} />
+                  All Products
+                </Link>
+                <span className="text-xs font-semibold text-muted-foreground bg-secondary/80 border border-border/50 px-3 py-1.5 rounded-full">
                   {product.category}
                 </span>
                 {product.badge && <Badge label={product.badge.label} variant={product.badge.variant} />}
               </motion.div>
 
-              <motion.h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-800 tracking-tight text-foreground leading-[1.05]"
+              {/* Title */}
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={heroView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, delay: 0.1 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
               >
-                {product.name}
-              </motion.h1>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.02]">
+                  {product.name}
+                </h1>
+                <p className="mt-3 text-base sm:text-lg font-semibold text-primary leading-snug">
+                  {product.tagline}
+                </p>
+              </motion.div>
 
+              {/* Description */}
               <motion.p
-                className="mt-3 text-base sm:text-lg font-600 text-primary"
-                initial={{ opacity: 0, y: 16 }}
-                animate={heroView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.15 }}
-              >
-                {product.tagline}
-              </motion.p>
-
-              <motion.p
-                className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-md"
+                className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-lg"
                 initial={{ opacity: 0, y: 14 }}
                 animate={heroView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.15 }}
               >
                 {product.description}
               </motion.p>
 
               {/* Rating */}
               <motion.div
-                className="flex items-center gap-2 mt-5"
+                className="flex items-center gap-2"
                 initial={{ opacity: 0 }}
                 animate={heroView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.28 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <Stars rating={product.rating} />
-                <span className="text-sm font-700 text-foreground">{product.rating}</span>
-                <span className="text-xs text-muted-foreground">({product.reviews} reviews)</span>
+                <span className="text-sm font-bold text-foreground">{product.rating}</span>
+                <span className="text-sm text-muted-foreground">({product.reviews} verified reviews)</span>
               </motion.div>
 
               {/* Highlight chips */}
               <motion.div
-                className="flex flex-wrap gap-2 mt-5"
+                className="flex flex-wrap gap-2"
                 initial={{ opacity: 0, y: 10 }}
                 animate={heroView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.3 }}
+                transition={{ duration: 0.5, delay: 0.25 }}
               >
                 {product.highlights.map((h) => (
                   <span
                     key={h}
-                    className="inline-flex items-center gap-1.5 text-xs text-muted-foreground bg-secondary/60 border border-border/50 px-3 py-1.5 rounded-full"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground bg-background/80 backdrop-blur-sm border border-border/60 px-3 py-1.5 rounded-full shadow-sm"
                   >
-                    <Icon name="CheckIcon" size={9} className="text-primary shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                     {h}
                   </span>
                 ))}
               </motion.div>
+
+              {/* Mobile CTA strip */}
+              <motion.div
+                className="flex items-center gap-3 lg:hidden pt-1"
+                initial={{ opacity: 0, y: 10 }}
+                animate={heroView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <Link href="/product-configurator" className="btn-primary flex-1 justify-center text-sm">
+                  Get Quote
+                  <Icon name="ArrowRightIcon" size={14} />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="flex-1 flex items-center justify-center px-4 py-2.5 rounded-xl border border-border/80 text-sm font-semibold text-foreground hover:bg-secondary/60 transition-colors"
+                >
+                  Book Survey
+                </Link>
+              </motion.div>
             </div>
 
-            {/* Right: pricing + CTA card */}
+            {/* Right: pricing card — desktop only */}
             <motion.div
-              className="md:col-span-5 lg:col-span-4 lg:col-start-9"
-              initial={{ opacity: 0, y: 24 }}
-              animate={heroView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2 }}
+              className="lg:col-span-5 hidden lg:flex items-center justify-end"
+              initial={{ opacity: 0, x: 24 }}
+              animate={heroView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="bg-card/80 backdrop-blur-md border border-border/60 rounded-3xl p-6 shadow-medium">
+              <div className="w-full max-w-sm bg-card/90 backdrop-blur-xl border border-border/50 rounded-3xl p-6 shadow-2xl">
                 {/* Spec trio */}
                 <div className="grid grid-cols-3 gap-2 mb-5">
                   {[
@@ -720,217 +699,275 @@ export default function ProductDetailPage({ params: pageParams }: { params?: { s
                     { label: 'Acoustic', value: product.acoustic },
                     { label: 'Profile', value: product.profiles },
                   ].map((s) => (
-                    <div key={s.label} className="flex flex-col items-center gap-0.5 px-2 py-3 rounded-xl bg-secondary/70">
-                      <span className="text-xs font-800 text-primary text-center leading-tight">{s.value}</span>
-                      <span className="text-[9px] font-500 text-muted-foreground uppercase tracking-widest mt-0.5">{s.label}</span>
+                    <div key={s.label} className="flex flex-col items-center gap-1 px-2 py-3.5 rounded-2xl bg-secondary/80 border border-border/30">
+                      <span className="text-xs font-bold text-primary text-center leading-tight">{s.value}</span>
+                      <span className="text-[9px] font-semibold text-muted-foreground uppercase tracking-widest">{s.label}</span>
                     </div>
                   ))}
                 </div>
 
+                {/* Divider */}
+                <div className="h-px bg-border/50 mb-5" />
+
                 {/* Price */}
-                <div className="border-t border-border/50 pt-4 mb-4">
-                  <p className="text-[9px] font-700 text-muted-foreground uppercase tracking-[0.18em]">Starting from</p>
-                  <p className="text-3xl font-800 text-foreground tracking-tight leading-none mt-1">
-                    {product.startingPrice}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">{product.priceUnit} · including installation</p>
+                <div className="mb-5">
+                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em] mb-1">Starting from</p>
+                  <div className="flex items-baseline gap-2">
+                    <p className="text-4xl font-extrabold text-foreground tracking-tight leading-none">
+                      {product.startingPrice}
+                    </p>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1.5">{product.priceUnit} · including installation</p>
                 </div>
 
                 {/* CTAs */}
-                <div className="flex flex-col gap-2">
-                  <Link href="/product-configurator" className="btn-primary w-full justify-center">
-                    Configure &amp; Quote
-                    <Icon name="ArrowRightIcon" size={14} />
+                <div className="flex flex-col gap-2.5">
+                  <Link href="/product-configurator" className="btn-primary w-full justify-center py-3">
+                    Configure &amp; Get Quote
+                    <Icon name="ArrowRightIcon" size={15} />
                   </Link>
                   <Link
                     href="/contact"
-                    className="w-full flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-border/80 text-sm font-600 text-foreground hover:bg-secondary/60 transition-colors"
+                    className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-border/70 text-sm font-semibold text-foreground hover:bg-secondary/60 transition-colors"
                   >
                     Book Free Survey
                   </Link>
                 </div>
 
-                {/* Trust line */}
-                <p className="text-[10px] text-muted-foreground text-center mt-3">
-                  ISO-certified · Manufactured in Pune · 10-year warranty
-                </p>
+                {/* Trust badges */}
+                <div className="mt-5 pt-4 border-t border-border/40 flex items-center justify-center gap-4">
+                  {['ISO Certified', 'Made in Pune', '10-yr Warranty'].map((t) => (
+                    <span key={t} className="text-[9px] font-semibold text-muted-foreground uppercase tracking-wide flex items-center gap-1">
+                      <span className="w-1 h-1 rounded-full bg-primary/60" />
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
+
           </div>
         </div>
       </section>
 
-      {/* ── Body content ── */}
-      <div ref={bodyRef} className="max-w-7xl mx-auto px-4 sm:px-6 pb-24 space-y-20">
+      {/* ── BODY ── */}
+      <div ref={bodyRef} className="bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 space-y-20 sm:space-y-24 lg:space-y-28">
 
-        {/* ── Long description ── */}
-        <motion.section
-          className="grid grid-cols-1 lg:grid-cols-12 gap-10"
-          initial={{ opacity: 0, y: 24 }}
-          animate={bodyView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-        >
-          <div className="lg:col-span-7">
-            <div className="flex items-center gap-3 mb-5">
-              <span className="block w-5 h-px bg-primary/50" />
-              <span className="section-label">About This Product</span>
-            </div>
-            <div className="prose prose-sm max-w-none text-muted-foreground leading-relaxed">
-              {product.longDescription.split('\n\n').map((para, i) => (
-                <p key={i} className="mb-4 last:mb-0">{para.trim()}</p>
-              ))}
-            </div>
-          </div>
-
-          {/* Applications column */}
-          <div className="lg:col-span-4 lg:col-start-9">
-            <p className="text-xs font-700 text-muted-foreground uppercase tracking-widest mb-3">Best suited for</p>
-            <div className="flex flex-col gap-2">
-              {product.applications.map((app) => (
-                <div
-                  key={app}
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl bg-secondary/50 border border-border/40"
-                >
-                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                    <Icon name="CheckIcon" size={10} className="text-primary" />
-                  </div>
-                  <span className="text-sm font-600 text-foreground">{app}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* ── Features / Specs tabs ── */}
-        <motion.section
-          initial={{ opacity: 0, y: 24 }}
-          animate={bodyView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.12 }}
-        >
-          {/* Tab switcher */}
-          <div className="flex items-center gap-1 p-1 bg-secondary/60 border border-border/50 rounded-2xl w-fit mb-8">
-            {(['features', 'specs'] as const).map((t) => (
-              <button
-                key={t}
-                onClick={() => setTab(t)}
-                className={`relative px-5 py-2 rounded-xl text-sm font-600 transition-colors duration-200 ${
-                  tab === t ? 'text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
-                }`}
-              >
-                {tab === t && (
-                  <motion.span
-                    layoutId="detail-tab-pill"
-                    className="absolute inset-0 bg-primary rounded-xl shadow-soft"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10 capitalize">{t}</span>
-              </button>
-            ))}
-          </div>
-
-          <AnimatePresence mode="wait">
-            {tab === 'features' ? (
-              <motion.div
-                key="features"
-                className="grid grid-cols-1 sm:grid-cols-2 gap-5"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.2 }}
-              >
-                {product.features.map((f, i) => (
-                  <motion.div
-                    key={f.title}
-                    className="flex gap-4 p-5 rounded-2xl bg-card border border-border/60 shadow-soft"
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.45, delay: i * 0.07 }}
-                  >
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                      <Icon name={f.icon} size={18} className="text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-700 text-foreground">{f.title}</p>
-                      <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">{f.body}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            ) : (
-              <motion.div
-                key="specs"
-                className="grid grid-cols-2 sm:grid-cols-4 gap-3"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.2 }}
-              >
-                {product.specs.map((s, i) => (
-                  <motion.div
-                    key={s.label}
-                    className="flex flex-col gap-1 p-4 rounded-2xl bg-card border border-border/60 shadow-soft"
-                    initial={{ opacity: 0, scale: 0.96 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.35, delay: i * 0.05 }}
-                  >
-                    <span className="text-[9px] font-700 text-muted-foreground uppercase tracking-widest">{s.label}</span>
-                    <span className="text-sm font-800 text-foreground leading-tight">{s.value}</span>
-                  </motion.div>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.section>
-
-        {/* ── Related products ── */}
-        {relatedProducts.length > 0 && (
+          {/* ── About + Applications ── */}
           <motion.section
-            initial={{ opacity: 0, y: 24 }}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16"
+            initial={{ opacity: 0, y: 28 }}
             animate={bodyView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.22 }}
+            transition={{ duration: 0.7 }}
           >
-            <div className="flex items-center gap-3 mb-6">
-              <span className="block w-5 h-px bg-primary/50" />
-              <span className="section-label">You Might Also Consider</span>
+            {/* Long description */}
+            <div className="lg:col-span-7">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="block w-6 h-0.5 bg-primary rounded-full" />
+                <span className="text-xs font-bold text-primary uppercase tracking-[0.18em]">About This Product</span>
+              </div>
+              <div className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
+                {product.longDescription.split('\n\n').map((para, i) => (
+                  <p key={i}>{para.trim()}</p>
+                ))}
+              </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              {relatedProducts.map((rp) => (
-                <RelatedCard key={rp.id} product={rp} />
-              ))}
+
+            {/* Applications */}
+            <div className="lg:col-span-5">
+              <p className="text-xs font-bold text-muted-foreground uppercase tracking-[0.18em] mb-4">Best Suited For</p>
+              <div className="flex flex-col gap-2.5">
+                {product.applications.map((app, i) => (
+                  <motion.div
+                    key={app}
+                    className="flex items-center gap-3.5 px-4 py-3.5 rounded-2xl bg-secondary/50 border border-border/40 hover:border-primary/20 hover:bg-secondary/80 transition-colors"
+                    initial={{ opacity: 0, x: 16 }}
+                    animate={bodyView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.4, delay: i * 0.07 }}
+                  >
+                    <div className="w-7 h-7 rounded-xl bg-primary/10 border border-primary/10 flex items-center justify-center shrink-0">
+                      <Icon name="CheckIcon" size={11} className="text-primary" />
+                    </div>
+                    <span className="text-sm font-semibold text-foreground">{app}</span>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Mobile pricing card */}
+              <div className="mt-8 lg:hidden bg-card border border-border/50 rounded-3xl p-5 shadow-lg">
+                <div className="grid grid-cols-3 gap-2 mb-4">
+                  {[
+                    { label: 'U-Value', value: product.uValue },
+                    { label: 'Acoustic', value: product.acoustic },
+                    { label: 'Profile', value: product.profiles },
+                  ].map((s) => (
+                    <div key={s.label} className="flex flex-col items-center gap-1 px-2 py-3 rounded-xl bg-secondary/80">
+                      <span className="text-xs font-bold text-primary text-center leading-tight">{s.value}</span>
+                      <span className="text-[9px] font-semibold text-muted-foreground uppercase tracking-widest">{s.label}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="border-t border-border/40 pt-4">
+                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.15em]">Starting from</p>
+                  <p className="text-3xl font-extrabold text-foreground mt-1">{product.startingPrice}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{product.priceUnit} · including installation</p>
+                </div>
+              </div>
             </div>
           </motion.section>
-        )}
 
-        {/* ── CTA banner ── */}
-        <motion.div
-          className="glass-card rounded-3xl border border-border/60 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-5 relative overflow-hidden"
-          initial={{ opacity: 0, y: 16 }}
-          animate={bodyView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <div className="absolute -top-16 -left-16 w-56 h-56 bg-primary/6 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-16 -right-8 w-56 h-56 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
-          <div className="relative text-center sm:text-left">
-            <p className="text-base font-700 text-foreground">Ready to get a quote for {product.name}?</p>
-            <p className="text-sm text-muted-foreground mt-1">
-              Our specialists will visit, measure, and recommend — completely free.
-            </p>
-          </div>
-          <div className="relative flex items-center gap-3 shrink-0">
-            <Link href="/product-configurator" className="btn-primary">
-              Configure Windows
-              <Icon name="ArrowRightIcon" size={16} />
-            </Link>
-            <Link
-              href="/contact"
-              className="px-5 py-2.5 rounded-xl border border-border/80 text-sm font-600 text-foreground hover:bg-secondary/60 transition-colors"
+          {/* ── Features / Specs tabs ── */}
+          <motion.section
+            initial={{ opacity: 0, y: 28 }}
+            animate={bodyView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
+            {/* Section header */}
+            <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
+              <div className="flex items-center gap-3">
+                <span className="block w-6 h-0.5 bg-primary rounded-full" />
+                <span className="text-xs font-bold text-primary uppercase tracking-[0.18em]">Details</span>
+              </div>
+
+              {/* Tab switcher */}
+              <div className="flex items-center gap-1 p-1 bg-secondary/70 border border-border/40 rounded-2xl">
+                {(['features', 'specs'] as const).map((t) => (
+                  <button
+                    key={t}
+                    onClick={() => setTab(t)}
+                    className={`relative px-5 py-2 rounded-xl text-sm font-semibold transition-colors duration-200 ${
+                      tab === t ? 'text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    {tab === t && (
+                      <motion.span
+                        layoutId="detail-tab-pill"
+                        className="absolute inset-0 bg-primary rounded-xl"
+                        transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10 capitalize">{t}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <AnimatePresence mode="wait">
+              {tab === 'features' ? (
+                <motion.div
+                  key="features"
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {product.features.map((f, i) => (
+                    <motion.div
+                      key={f.title}
+                      className="flex gap-4 p-5 sm:p-6 rounded-2xl bg-card border border-border/50 hover:border-border/80 hover:shadow-md transition-all duration-200"
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: i * 0.07 }}
+                    >
+                      <div className="w-11 h-11 rounded-2xl bg-primary/10 border border-primary/10 flex items-center justify-center shrink-0">
+                        <Icon name={f.icon} size={20} className="text-primary" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-bold text-foreground mb-1.5">{f.title}</p>
+                        <p className="text-xs text-muted-foreground leading-relaxed">{f.body}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="specs"
+                  className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {product.specs.map((s, i) => (
+                    <motion.div
+                      key={s.label}
+                      className="flex flex-col gap-1.5 p-4 sm:p-5 rounded-2xl bg-card border border-border/50 hover:border-border/80 hover:shadow-md transition-all duration-200"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3, delay: i * 0.05 }}
+                    >
+                      <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-[0.18em]">{s.label}</span>
+                      <span className="text-sm sm:text-base font-bold text-foreground leading-tight">{s.value}</span>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.section>
+
+          {/* ── Related products ── */}
+          {relatedProducts.length > 0 && (
+            <motion.section
+              initial={{ opacity: 0, y: 28 }}
+              animate={bodyView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.18 }}
             >
-              Book Survey
-            </Link>
-          </div>
-        </motion.div>
+              <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
+                <div className="flex items-center gap-3">
+                  <span className="block w-6 h-0.5 bg-primary rounded-full" />
+                  <span className="text-xs font-bold text-primary uppercase tracking-[0.18em]">You Might Also Consider</span>
+                </div>
+                <Link href="/#products" className="text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+                  View all <Icon name="ArrowRightIcon" size={11} />
+                </Link>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                {relatedProducts.map((rp) => (
+                  <RelatedCard key={rp.id} product={rp} />
+                ))}
+              </div>
+            </motion.section>
+          )}
 
+          {/* ── CTA Banner ── */}
+          <motion.div
+            className="relative overflow-hidden rounded-3xl border border-border/50 bg-card"
+            initial={{ opacity: 0, y: 20 }}
+            animate={bodyView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.24 }}
+          >
+            {/* Background accent */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
+            <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-20 -left-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="relative flex flex-col sm:flex-row items-center justify-between gap-6 p-8 sm:p-10">
+              <div className="text-center sm:text-left">
+                <p className="text-xl sm:text-2xl font-extrabold text-foreground leading-tight">
+                  Ready for a quote on {product.name}?
+                </p>
+                <p className="text-sm text-muted-foreground mt-2 max-w-md">
+                  Our specialists visit, measure, and recommend — completely free. No obligation.
+                </p>
+              </div>
+              <div className="flex items-center gap-3 shrink-0 flex-wrap justify-center sm:justify-end">
+                <Link href="/product-configurator" className="btn-primary whitespace-nowrap">
+                  Configure Windows
+                  <Icon name="ArrowRightIcon" size={16} />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="px-5 py-2.5 rounded-xl border border-border/80 text-sm font-semibold text-foreground hover:bg-secondary/60 transition-colors whitespace-nowrap"
+                >
+                  Book Survey
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
       </div>
     </main>
   );

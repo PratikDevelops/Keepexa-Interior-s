@@ -3,21 +3,34 @@
 @tailwind utilities;
 
 :root {
+  /* Backgrounds & Surface */
   --background: #F9F8F6;
-  --foreground: #1A1F2E;
-  --primary: #2C4A6E;
-  --primary-foreground: #FFFFFF;
-  --secondary: #F0EDE8;
-  --secondary-foreground: #2C4A6E;
-  --accent: #8BA7C7;
-  --accent-foreground: #1A1F2E;
-  --muted: #EAE8E3;
-  --muted-foreground: #6B7280;
+  --foreground: #14515E;
   --card: #FFFFFF;
-  --card-foreground: #1A1F2E;
+  --card-foreground: #14515E;
+
+  /* Primary (Action Color - Your Deep Red) */
+  --primary: #B32025;
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #CC8229;
+  --secondary-foreground: #FFFFFF;
+
+  --accent: #14515E; 
+  --accent-foreground: #FFFFFF;
+
+
+  --muted: #F0EDE8;
+  --muted-foreground: #6B7280;
   --border: #E2DDD7;
   --input: #EAE8E3;
-  --ring: #8BA7C7;
+  --ring: #CC8229; /* Using Gold for the focus ring */
+
+  /* Branding / Extra Utility */
+  --brand-teal: #14515E;
+  --brand-gold: #CC8229;
+  --brand-red: #B32025;
+
   --radius: 1rem;
   --font-sans: var(--font-dm-sans), sans-serif;
 }

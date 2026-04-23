@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: 'Keepexa Interiors — Engineered UPVC Windows',
   description: 'Keepexa Interiors crafts premium UPVC windows delivering acoustic silence, thermal efficiency, and architectural elegance for modern UK homes.',
   icons: {
-    icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
+    icon: [{ url: '/favicon.png', type: 'image/x-icon' }],
   },
 };
 

@@ -15,12 +15,12 @@ interface Config {
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 const windowTypes = [
-  { id: 'casement', label: 'Casement', desc: 'Side-hinged, versatile', basePrice: 18500 },
-  { id: 'sliding', label: 'Sliding', desc: 'Space-saving, smooth glide', basePrice: 16500 },
-  { id: 'tilt-turn', label: 'Tilt & Turn', desc: 'Dual-opening, secure', basePrice: 22000 },
-  { id: 'fixed', label: 'Fixed Light', desc: 'Maximum glazed area', basePrice: 13500 },
-  { id: 'bay', label: 'Bay Window', desc: 'Panoramic projection', basePrice: 38000 },
-  { id: 'arch', label: 'Arch / Shaped', desc: 'Custom curved designs', basePrice: 32000 },
+  { id: 'casement', label: 'Casement', desc: 'Side-hinged, versatile', basePrice: 550 },
+  { id: 'sliding', label: 'Sliding', desc: 'Space-saving, smooth glide', basePrice: 550 },
+  { id: 'tilt-turn', label: 'Tilt & Turn', desc: 'Dual-opening, secure', basePrice: 1000 },
+  { id: 'fixed', label: 'Fixed Light', desc: 'Maximum glazed area', basePrice: 500 },
+  { id: 'bay', label: 'Bay Window', desc: 'Panoramic projection', basePrice: 600 },
+  { id: 'arch', label: 'Arch / Shaped', desc: 'Custom curved designs', basePrice: 950 },
 ];
 
 const doorTypes = [
@@ -196,12 +196,50 @@ function QuoteForm({ config, price, onClose, category }: { config: Config; price
     notes: '',
   });
   const [step, setStep] = useState<1 | 2>(1);
-  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
+
+  // This object maps your state variables to your Google Sheet columns
+  const dataToSubmit = {
+    name: form.name,
+    phone: form.phone,
+    email: form.email,
+    city: form.city,
+    propertyType: form.propertyType,
+    quantity: form.quantity,
+    timeline: form.timeline,
+    notes: form.notes,
+    date: new Date().toLocaleString('en-IN'), // Adds a timestamp for your records
   };
+
+  try {
+    const response = await fetch("https://api.sheetbest.com/sheets/e5465445-5d26-43e1-b57b-7583dd9dbdc6", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dataToSubmit),
+    });
+    console.log("Submission Response:", response);
+
+    if (response.ok) {
+      setSubmitted(true);
+      // If you want to reset the form after success:
+      // setFormData({ name: '', phone: '', email: '', city: '', propertyType: '', quantity: '1', timeline: '', notes: '' });
+    } else {
+      throw new Error("Failed to sync with Google Sheets");
+    }
+  } catch (error) {
+    console.error("Submission Error:", error);
+    alert("Service is temporarily busy. Please try again or reach out via WhatsApp.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   const allTypes = [...windowTypes, ...doorTypes];
   const colorLabel = frameColors.find((c) => c.id === config.frameColor)?.label;

@@ -168,8 +168,7 @@ export default function Footer() {
             <FadeUp delay={0.05} className="flex flex-col gap-6">
               {/* Logo */}
               <Link href="/homepage" className="flex items-center gap-2.5 group w-fit">
-                <AppLogo size={36} onClick={() => {}} className="transition-transform duration-300 group-hover:scale-105" />
-                <span className="font-800 text-xl tracking-tight text-foreground">Keepexa Interior's</span>
+                <AppLogo size={130} onClick={() => {}} className="transition-transform duration-300 group-hover:scale-105" />
               </Link>
 
               {/* Tagline */}

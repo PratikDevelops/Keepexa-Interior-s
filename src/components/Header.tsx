@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,10 +8,24 @@ import AppLogo from '@/components/ui/AppLogo';
 import Icon from '@/components/ui/AppIcon';
 
 /* ─────────────────────────────────────────────
-   Nav links
+   Product routes (from generateStaticParams)
+───────────────────────────────────────────── */
+const productLinks = [
+  { label: 'Tilt & Turn',      href: '/products/tilt-turn' },
+  { label: 'Casement',         href: '/products/casement' },
+  { label: 'Sliding 2-Track',  href: '/products/sliding-2track' },
+  { label: 'French Casement',  href: '/products/french-casement' },
+  { label: 'Lift & Slide',     href: '/products/lift-slide' },
+  { label: 'Fixed / Picture',  href: '/products/fixed-picture' },
+  { label: 'Bay Window',       href: '/products/bay-window' },
+  { label: 'Louvre',           href: '/products/louvre' },
+];
+
+/* ─────────────────────────────────────────────
+   Nav links  (Windows & Doors is now a dropdown)
 ───────────────────────────────────────────── */
 const navLinks = [
-  { label: 'Windows & Doors', href: '/homepage#features' },
+  { label: 'Windows & Doors', href: '/homepage#features', hasDropdown: true },
   { label: 'Gallery',         href: '/gallery' },
   { label: 'About Us',        href: '/homepage#about' },
   { label: 'Why Choose Us',   href: '/homepage#why-choose-us' },
@@ -45,6 +59,60 @@ function HamburgerIcon({ open }: { open: boolean }) {
 }
 
 /* ─────────────────────────────────────────────
+   Desktop product dropdown panel
+───────────────────────────────────────────── */
+function ProductDropdown({ visible }: { visible: boolean }) {
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          initial={{ opacity: 0, y: 8, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 8, scale: 0.97 }}
+          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-background border border-border/60 rounded-2xl shadow-medium overflow-hidden z-50"
+        >
+          {/* Header strip */}
+          <div className="px-4 pt-3.5 pb-2 border-b border-border/40">
+            <span className="text-[10px] font-700 uppercase tracking-[0.18em] text-muted-foreground">
+              Our Products
+            </span>
+          </div>
+
+          {/* Product grid — 2 columns */}
+          <div className="grid grid-cols-2 gap-px p-2">
+            {productLinks.map((p) => (
+              <Link
+                key={p.href}
+                href={p.href}
+                className="group flex items-center gap-2 px-3 py-2.5 rounded-xl hover:bg-secondary/70 transition-colors duration-150"
+              >
+                {/* Dot accent */}
+                <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors duration-200" />
+                <span className="text-sm font-500 text-foreground/80 group-hover:text-foreground transition-colors leading-tight">
+                  {p.label}
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          {/* Footer CTA */}
+          <div className="px-3 pb-3 pt-1">
+            <Link
+              href="/homepage#features"
+              className="flex items-center justify-center gap-1.5 w-full text-xs font-600 text-primary hover:underline underline-offset-2 py-1.5"
+            >
+              View all products
+              <Icon name="ArrowRightIcon" size={13} />
+            </Link>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+/* ─────────────────────────────────────────────
    Mobile nav link row
 ───────────────────────────────────────────── */
 function MobileNavLink({
@@ -52,10 +120,73 @@ function MobileNavLink({
   index,
   onClose,
 }: {
-  link: { label: string; href: string };
+  link: { label: string; href: string; hasDropdown?: boolean };
   index: number;
   onClose: () => void;
 }) {
+  const [expanded, setExpanded] = useState(false);
+
+  if (link.hasDropdown) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.35, delay: 0.08 + index * 0.055, ease: [0.16, 1, 0.3, 1] }}
+      >
+        {/* Toggle row */}
+        <button
+          className="group flex items-center justify-between w-full py-4 text-base font-500 text-foreground border-b border-border/50 hover:text-primary transition-colors duration-200"
+          onClick={() => setExpanded((e) => !e)}
+          aria-expanded={expanded}
+        >
+          <span>{link.label}</span>
+          <motion.span
+            className="text-muted-foreground group-hover:text-primary transition-colors"
+            animate={{ rotate: expanded ? 90 : 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Icon name="ChevronRightIcon" size={16} />
+          </motion.span>
+        </button>
+
+        {/* Expandable product list */}
+        <AnimatePresence initial={false}>
+          {expanded && (
+            <motion.div
+              key="products"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-hidden"
+            >
+              <div className="grid grid-cols-2 gap-x-2 gap-y-0.5 py-2 pl-3 border-b border-border/50">
+                {productLinks.map((p, pi) => (
+                  <motion.div
+                    key={p.href}
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: pi * 0.04 }}
+                  >
+                    <Link
+                      href={p.href}
+                      onClick={onClose}
+                      className="flex items-center gap-2 py-2.5 text-sm font-500 text-muted-foreground hover:text-primary transition-colors duration-150"
+                    >
+                      <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-primary/40" />
+                      {p.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    );
+  }
+
+  /* Plain link */
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -84,9 +215,11 @@ function MobileNavLink({
    Header
 ───────────────────────────────────────────── */
 export default function Header() {
-  const [scrolled, setScrolled]   = useState(false);
-  const [menuOpen, setMenuOpen]   = useState(false);
+  const [scrolled, setScrolled]       = useState(false);
+  const [menuOpen, setMenuOpen]       = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   /* scroll listener */
@@ -101,6 +234,17 @@ export default function Header() {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
+
+  /* close dropdown on outside click */
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
 
   const isActive = (href: string) => {
     if (href.includes('#')) return false;
@@ -125,34 +269,79 @@ export default function Header() {
           {/* Logo */}
           <Link href="/homepage" className="flex items-center gap-2.5 group shrink-0">
             <AppLogo
-              size={36}
+              size={130}
               onClick={() => {}}
               className="transition-transform duration-300 group-hover:scale-105"
             />
-            <span className="font-800 text-xl tracking-tight text-foreground">
-              Keepexa Interior's
-            </span>
           </Link>
 
           {/* Desktop nav links */}
           <div
             className="hidden md:flex items-center gap-1"
-            onMouseLeave={() => setHoveredLink(null)}
+            onMouseLeave={() => {
+              setHoveredLink(null);
+              setDropdownOpen(false);
+            }}
           >
             {navLinks.map((link) => {
               const active = isActive(link.href);
+
+              /* ── Windows & Doors dropdown trigger ── */
+              if (link.hasDropdown) {
+                return (
+                  <div
+                    key={link.href}
+                    ref={dropdownRef}
+                    className="relative"
+                    onMouseEnter={() => { setHoveredLink(link.href); setDropdownOpen(true); }}
+                  >
+                    <Link
+                      href={link.href}
+                      className={`relative flex items-center gap-1 px-3.5 py-2 rounded-xl text-sm font-500 transition-colors duration-200 ${
+                        active || dropdownOpen
+                          ? 'text-primary font-600'
+                          : 'text-muted-foreground hover:text-foreground'
+                      }`}
+                    >
+                      {/* Hover background pill */}
+                      {hoveredLink === link.href && (
+                        <motion.span
+                          layoutId="nav-hover-bg"
+                          className="absolute inset-0 bg-secondary/70 rounded-xl"
+                          transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                        />
+                      )}
+
+                      <span className="relative z-10">{link.label}</span>
+
+                      {/* Caret */}
+                      <motion.span
+                        className="relative z-10 text-muted-foreground"
+                        animate={{ rotate: dropdownOpen ? 180 : 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <Icon name="ChevronDownIcon" size={14} />
+                      </motion.span>
+                    </Link>
+
+                    {/* Dropdown panel */}
+                    <ProductDropdown visible={dropdownOpen} />
+                  </div>
+                );
+              }
+
+              /* ── Regular link ── */
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  onMouseEnter={() => setHoveredLink(link.href)}
+                  onMouseEnter={() => { setHoveredLink(link.href); setDropdownOpen(false); }}
                   className={`relative px-3.5 py-2 rounded-xl text-sm font-500 transition-colors duration-200 ${
                     active
                       ? 'text-primary font-600'
                       : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >
-                  {/* Hover background pill */}
                   {hoveredLink === link.href && !active && (
                     <motion.span
                       layoutId="nav-hover-bg"
@@ -160,8 +349,6 @@ export default function Header() {
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
-
-                  {/* Active underline indicator */}
                   {active && (
                     <motion.span
                       layoutId="nav-active-indicator"
@@ -169,7 +356,6 @@ export default function Header() {
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
-
                   <span className="relative z-10">{link.label}</span>
                 </Link>
               );
