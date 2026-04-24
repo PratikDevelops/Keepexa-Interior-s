@@ -25,7 +25,7 @@ const productLinks = [
    Nav links  (Windows & Doors is now a dropdown)
 ───────────────────────────────────────────── */
 const navLinks = [
-  { label: 'Windows & Doors', href: '/homepage#features', hasDropdown: true },
+  { label: 'Windows & Doors', href: '/homepage#products', hasDropdown: true },
   { label: 'Gallery',         href: '/gallery' },
   { label: 'About Us',        href: '/homepage#about' },
   { label: 'Why Choose Us',   href: '/homepage#why-choose-us' },
@@ -99,7 +99,7 @@ function ProductDropdown({ visible }: { visible: boolean }) {
           {/* Footer CTA */}
           <div className="px-3 pb-3 pt-1">
             <Link
-              href="/homepage#features"
+              href="/homepage#products"
               className="flex items-center justify-center gap-1.5 w-full text-xs font-600 text-primary hover:underline underline-offset-2 py-1.5"
             >
               View all products

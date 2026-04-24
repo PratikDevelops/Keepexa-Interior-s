@@ -676,7 +676,7 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                   <Icon name="ArrowRightIcon" size={14} />
                 </Link>
                 <Link
-                  href="/contact"
+                  href="/book-survey"
                   className="flex-1 flex items-center justify-center px-4 py-2.5 rounded-xl border border-border/80 text-sm font-semibold text-foreground hover:bg-secondary/60 transition-colors"
                 >
                   Book Survey
@@ -727,7 +727,7 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                     <Icon name="ArrowRightIcon" size={15} />
                   </Link>
                   <Link
-                    href="/contact"
+                    href="/book-survey"
                     className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-border/70 text-sm font-semibold text-foreground hover:bg-secondary/60 transition-colors"
                   >
                     Book Free Survey
@@ -958,7 +958,7 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                   <Icon name="ArrowRightIcon" size={16} />
                 </Link>
                 <Link
-                  href="/contact"
+                  href="/book-survey"
                   className="px-5 py-2.5 rounded-xl border border-border/80 text-sm font-semibold text-foreground hover:bg-secondary/60 transition-colors whitespace-nowrap"
                 >
                   Book Survey
