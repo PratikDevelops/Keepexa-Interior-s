@@ -269,7 +269,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/homepage" className="flex items-center gap-2.5 group shrink-0">
             <AppLogo
-              size={130}
+              size={140}
               onClick={() => {}}
               className="transition-transform duration-300 group-hover:scale-105"
             />
@@ -455,7 +455,7 @@ export default function Header() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
               >
-                ISO-certified · Pune-manufactured · No resellers
+                ISO-certified · Mumbai-manufactured · No resellers
               </motion.p>
             </motion.div>
           </>

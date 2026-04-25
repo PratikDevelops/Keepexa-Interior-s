@@ -1,7 +1,7 @@
 // src/components/WhatsAppButton.tsx
 
 export default function WhatsAppButton() {
-  const phoneNumber = "1234567890"; // Replace with your number (include country code)
+  const phoneNumber = "+917371073711"; // Replace with your number (include country code)
   const message = "Hello! I have a question about your products.";
 
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;

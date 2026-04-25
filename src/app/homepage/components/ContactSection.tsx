@@ -36,15 +36,15 @@ export default function ContactSection() {
                 Let&apos;s talk about your project.
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed mt-4">
-                Whether you have a question about products, need a quote for a project, or want to book a free home survey — we&apos;re here. Serving Mumbai, Delhi, Bengaluru, Hyderabad, Chennai, Pune and more.
+                Whether you have a question about products, need a quote for a project, or want to book a free home survey — we&apos;re here. Serving Mumbai, Delhi, Bengaluru, Hyderabad, Chennai, Mumbai and more.
               </p>
             </div>
 
             <div className="flex flex-col gap-3 sm:gap-4">
               {[
-                { icon: 'PhoneIcon', label: 'Phone', value: '+91 20 4890 7700', sub: 'Mon–Sat 9am–7pm IST' },
-                { icon: 'EnvelopeIcon', label: 'Email', value: 'namaste@Keepexa Interiors.in', sub: 'Response within 2 hours' },
-                { icon: 'MapPinIcon', label: 'Head Office', value: 'Plot 14, Kandivali, Mumbai, Maharashtra 400067', sub: 'Open Mon–Sat, appointment preferred' },
+                { icon: 'PhoneIcon', label: 'Phone', value: '++91 73710 73711', sub: 'Mon–Sat 9am–7pm IST' },
+                { icon: 'EnvelopeIcon', label: 'Email', value: 'admin@keepexa.in', sub: 'Response within 2 hours' },
+                { icon: 'MapPinIcon', label: 'Head Office', value: 'Maruti Niwas, BSNL colony, Opp IIT Main Gate, Powai, Mumbai – 400076, Maharashtra', sub: 'Open Mon–Sat, appointment preferred' },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-3 sm:gap-4 p-4 rounded-2xl bg-secondary/60 border border-border/50">
                   <div className="w-10 h-10 rounded-xl bg-primary/8 flex items-center justify-center shrink-0 mt-0.5">
@@ -63,7 +63,7 @@ export default function ContactSection() {
             <div className="p-4 rounded-2xl bg-secondary/60 border border-border/50">
               <p className="text-xs font-700 text-muted-foreground uppercase tracking-wide mb-3">We Serve Across India</p>
               <div className="flex flex-wrap gap-2">
-                {['Mumbai', 'Delhi NCR', 'Bengaluru', 'Hyderabad', 'Chennai', 'Pune', 'Ahmedabad', 'Kolkata', 'Jaipur', 'Chandigarh'].map((city) => (
+                {['Mumbai', 'Delhi NCR', 'Bengaluru', 'Hyderabad', 'Chennai', 'Mumbai', 'Ahmedabad', 'Kolkata', 'Jaipur', 'Chandigarh'].map((city) => (
                   <span key={city} className="text-xs font-500 text-foreground bg-white px-3 py-1.5 rounded-lg border border-border/60">
                     {city}
                   </span>
@@ -122,7 +122,7 @@ export default function ContactSection() {
                     <input
                       type="tel"
                       className={inputClass}
-                      placeholder="+91 98765 43210"
+                      placeholder="+91 73710 73711"
                       value={form.phone}
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
                     />

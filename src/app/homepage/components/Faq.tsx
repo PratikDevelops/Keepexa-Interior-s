@@ -27,7 +27,7 @@ const faqs: Faq[] = [
     category: 'Products',
     question: 'What UPVC profile grade do Keepexa Interiors windows use?',
     answer:
-      'We use only A-grade, lead-free multi-chamber UPVC profiles sourced from ISO-certified European suppliers. Every batch is tested for UV stability, wall thickness, and tensile strength before entering our Pune manufacturing facility. We never use recycled or mixed-grade filler material.',
+      'We use only A-grade, lead-free multi-chamber UPVC profiles sourced from ISO-certified European suppliers. Every batch is tested for UV stability, wall thickness, and tensile strength before entering our Mumbai manufacturing facility. We never use recycled or mixed-grade filler material.',
   },
   {
     id: 'p2',
@@ -78,7 +78,7 @@ const faqs: Faq[] = [
     category: 'Installation',
     question: 'What cities do you currently serve?',
     answer:
-      'We currently install across Mumbai, Pune, Delhi NCR, Bengaluru, Hyderabad, and Chennai, with service centres in each location for ongoing aftercare. We are actively expanding — contact us to confirm availability in your city if it is not listed.',
+      'We currently install across Mumbai, Mumbai, Delhi NCR, Bengaluru, Hyderabad, and Chennai, with service centres in each location for ongoing aftercare. We are actively expanding — contact us to confirm availability in your city if it is not listed.',
   },
   {
     id: 'i4',
@@ -354,7 +354,7 @@ export default function Faq() {
               <div>
                 <p className="text-base font-700 text-foreground">Still have questions?</p>
                 <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
-                  Speak directly with a Keepexa Interior's specialist — not a chatbot, not a call centre.
+                  Speak directly with a Keepexa Interior specialist — not a chatbot, not a call centre.
                 </p>
               </div>
               <Link href="/contact" className="btn-primary self-start">

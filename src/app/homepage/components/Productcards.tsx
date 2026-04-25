@@ -43,10 +43,10 @@ const products: Product[] = [
     tagline: "Europe's most versatile window, engineered for India",
     description:
       'A single handle controls two opening modes — tilt inward for ventilation without rain ingress, turn fully open for cleaning or emergency egress. Our most specified window for premium residential and commercial projects.',
-    image: 'https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png',
+    image: '/assets/images/tilt-and-turn.jpeg',
     imageAlt: 'Premium UPVC tilt and turn window in tilt position, white frame, flooded with natural light',
     badge: { label: "Editor's Choice", variant: 'eco' },
-    startingPrice: '₹11,600',
+    startingPrice: '₹750',
     priceUnit: 'per sq ft',
     rating: 4.9,
     reviews: 445,
@@ -64,10 +64,10 @@ const products: Product[] = [
     tagline: 'Side-hung sash, full ventilation, timeless profile',
     description:
       'The benchmark casement — side-hinged sash with multi-point locking, weather-seal gasket, and optional trickle vent.',
-    image: 'https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png',
+    image: '/assets/images/tilt-and-turn.jpeg',
     imageAlt: 'Classic white UPVC casement window, chrome handle, open position',
     badge: { label: 'Best Seller', variant: 'popular' },
-    startingPrice: '₹8,400',
+    startingPrice: '₹550',
     priceUnit: 'per sq ft',
     rating: 4.9,
     reviews: 612,
@@ -87,7 +87,7 @@ const products: Product[] = [
     image: 'https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png',
     imageAlt: 'UPVC horizontal sliding window overlooking balcony, white frame',
     badge: { label: 'Most Popular', variant: 'popular' },
-    startingPrice: '₹7,800',
+    startingPrice: '₹400',
     priceUnit: 'per sq ft',
     rating: 4.7,
     reviews: 834,
@@ -107,7 +107,7 @@ const products: Product[] = [
     image: 'https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png',
     imageAlt: 'UPVC French casement double window open wide, white frame, bright interior',
     badge: { label: 'Premium', variant: 'premium' },
-    startingPrice: '₹14,200',
+    startingPrice: '₹650',
     priceUnit: 'per sq ft',
     rating: 4.8,
     reviews: 289,
@@ -127,7 +127,7 @@ const products: Product[] = [
     image: 'https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png',
     imageAlt: 'Large UPVC lift and slide patio door panel, panoramic garden view',
     badge: { label: 'New', variant: 'new' },
-    startingPrice: '₹32,000',
+    startingPrice: '₹2500',
     priceUnit: 'per sq ft',
     rating: 4.9,
     reviews: 97,
@@ -146,7 +146,7 @@ const products: Product[] = [
       'Fully fixed frame with no moving parts — highest thermal and acoustic performance. Custom shapes available.',
     image: 'https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png',
     imageAlt: 'Large fixed UPVC picture window, minimal white frame, mountain view',
-    startingPrice: '₹5,900',
+    startingPrice: '₹500',
     priceUnit: 'per sq ft',
     rating: 4.8,
     reviews: 318,
@@ -166,7 +166,7 @@ const products: Product[] = [
     image: 'https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png',
     imageAlt: 'White UPVC bay window projecting from living room wall, classic styling',
     badge: { label: 'Premium', variant: 'premium' },
-    startingPrice: '₹42,000',
+    startingPrice: '₹600',
     priceUnit: 'set',
     rating: 4.7,
     reviews: 156,
@@ -186,7 +186,7 @@ const products: Product[] = [
     image: 'https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png',
     imageAlt: 'UPVC louvre vent window with angled glass blades in tropical setting',
     badge: { label: 'Eco Choice', variant: 'eco' },
-    startingPrice: '₹6,200',
+    startingPrice: '₹550',
     priceUnit: 'per sq ft',
     rating: 4.6,
     reviews: 203,
@@ -526,7 +526,7 @@ export default function ProductCards() {
               <span className="text-muted-foreground"> One standard of quality.</span>
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs sm:text-right">
-              Manufactured at our ISO-certified Pune facility and installed by our own team — no resellers, no shortcuts.
+              Manufactured at our ISO-certified Mumbai facility and installed by our own team — no resellers, no shortcuts.
             </p>
           </div>
         </motion.div>

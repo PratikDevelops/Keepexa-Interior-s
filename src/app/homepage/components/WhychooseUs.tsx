@@ -15,7 +15,7 @@ const reasons = [
   {
     icon: 'WrenchScrewdriverIcon',
     title: 'Factory-to-Fit Control',
-    desc: 'Every window is manufactured at our own ISO-certified Pune plant and installed by our own salaried team. No resellers, no subcontractors — full accountability at every step.',
+    desc: 'Every window is manufactured at our own ISO-certified Mumbai plant and installed by our own salaried team. No resellers, no subcontractors — full accountability at every step.',
     badge: 'Direct Ownership',
   },
   {
@@ -39,7 +39,7 @@ const reasons = [
   {
     icon: 'MapPinIcon',
     title: 'Pan-India Service Network',
-    desc: 'With service centres in Mumbai, Delhi, Bengaluru, Hyderabad, Chennai, and Pune, post-installation support is never more than a call away — wherever you are in India.',
+    desc: 'With service centres in Mumbai, Delhi, Bengaluru, Hyderabad, Chennai, and Mumbai, post-installation support is never more than a call away — wherever you are in India.',
     badge: 'Nationwide Reach',
   },
 ];
@@ -74,7 +74,7 @@ export default function WhyChooseUs() {
           animate={headInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <span className="section-label block mb-3">Why Keepexa Interior's</span>
+          <span className="section-label block mb-3">Why Keepexa Interior</span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-800 tracking-tight text-foreground max-w-2xl mx-auto leading-tight">
             Not all UPVC windows are the same. Ours are better — here's why.
           </h2>
@@ -122,7 +122,7 @@ export default function WhyChooseUs() {
           <div className="text-center mb-10 sm:mb-12">
             <span className="section-label block mb-3">Side-by-Side</span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-800 tracking-tight text-foreground">
-              Keepexa Interior's vs the rest.
+              Keepexa Interior vs the rest.
             </h2>
           </div>
 
@@ -130,7 +130,7 @@ export default function WhyChooseUs() {
             {/* Table header */}
             <div className="grid grid-cols-3 bg-secondary/80 px-5 sm:px-8 py-4 border-b border-border/60">
               <p className="text-xs font-700 uppercase tracking-widest text-muted-foreground">Feature</p>
-              <p className="text-xs font-700 uppercase tracking-widest text-primary text-center">Keepexa Interior's</p>
+              <p className="text-xs font-700 uppercase tracking-widest text-primary text-center">Keepexa Interior</p>
               <p className="text-xs font-700 uppercase tracking-widest text-muted-foreground text-center">Typical Competitor</p>
             </div>
 
@@ -147,7 +147,7 @@ export default function WhyChooseUs() {
               >
                 <p className="text-sm font-600 text-foreground">{row.feature}</p>
 
-                {/* Keepexa Interior's value */}
+                {/* Keepexa Interior value */}
                 <div className="flex items-center justify-center gap-2">
                   <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                     <Icon name="CheckIcon" size={10} className="text-primary" />

@@ -8,7 +8,7 @@ import Icon from '@/components/ui/AppIcon';
 
 const testimonials = [
 {
-  quote: "Keepexa Interior's transformed our Bandra apartment. The acoustic difference was immediately noticeable — we live 50 metres from the Western Express Highway and now barely hear it. The finish looks absolutely premium.",
+  quote: "Keepexa Interior transformed our Bandra apartment. The acoustic difference was immediately noticeable — we live 50 metres from the Western Express Highway and now barely hear it. The finish looks absolutely premium.",
   name: 'Priya Venkataraman',
   role: 'Homeowner, Mumbai',
   avatar: "https://img.rocket.new/generatedImages/rocket_gen_img_1712f5c9a-1774901987372.png",
@@ -26,7 +26,7 @@ const testimonials = [
   detail: '8 sliding windows · Anthracite Grey'
 },
 {
-  quote: "We specified Keepexa Interior's across a 56-unit residential project in Gurugram. Delivery was on schedule, the thermal performance exceeded our ECBC calculations, and the site team were professional throughout. Will specify again.",
+  quote: "We specified Keepexa Interior across a 56-unit residential project in Gurugram. Delivery was on schedule, the thermal performance exceeded our ECBC calculations, and the site team were professional throughout. Will specify again.",
   name: 'Kavitha Nair',
   role: 'Project Architect, Delhi NCR',
   avatar: "https://img.rocket.new/generatedImages/rocket_gen_img_134f328e7-1763295186862.png",

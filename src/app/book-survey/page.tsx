@@ -179,9 +179,9 @@ function StepTwo({ data, set }: { data: FormData; set: (k: keyof FormData, v: an
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
       <InputField label="Full Name"    value={data.name}    onChange={(v) => set('name', v)}    placeholder="Rahul Sharma"         required />
-      <InputField label="Phone"        type="tel"  value={data.phone}   onChange={(v) => set('phone', v)}   placeholder="+91 98765 43210"      required />
+      <InputField label="Phone"        type="tel"  value={data.phone}   onChange={(v) => set('phone', v)}   placeholder="+91 73710 73711"      required />
       <InputField label="Email"        type="email" value={data.email}  onChange={(v) => set('email', v)}   placeholder="rahul@example.com" />
-      <InputField label="City"         value={data.city}    onChange={(v) => set('city', v)}    placeholder="Pune"                 required />
+      <InputField label="City"         value={data.city}    onChange={(v) => set('city', v)}    placeholder="Mumbai"                 required />
       <div className="sm:col-span-2">
         <InputField label="Site Address" value={data.address} onChange={(v) => set('address', v)} placeholder="Flat / Plot no., Street, Locality" required />
       </div>

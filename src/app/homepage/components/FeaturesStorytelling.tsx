@@ -15,7 +15,7 @@ const features = [
   body: 'Our triple-glazed acoustic units reduce external noise by up to 42dB — the equivalent of silencing a busy Mumbai road to a quiet library. Engineered for homes near traffic corridors, metro lines, and bustling city centres across India.',
   detail: 'Laminated acoustic interlayer · Asymmetric glass configuration · Foam-filled frame cavities',
   icon: 'SpeakerXMarkIcon',
-  image: "https://img.rocket.new/generatedImages/rocket_gen_img_1302dc3b9-1772555234899.png",
+  image: "/assets/images/acoustic-performance.png",
   imageAlt: 'Serene quiet bedroom interior with large UPVC windows, soft morning light, peaceful atmosphere away from city noise',
   reverse: false,
   accent: '#2C4A6E'
@@ -29,7 +29,7 @@ const features = [
   body: 'Keepexa Interiors windows achieve SHGC values as low as 0.25 — blocking up to 75% of solar heat gain. Our thermally broken frames eliminate heat bridging, keeping interiors cool even in 45°C Indian summers without overworking your AC.',
   detail: 'SHGC from 0.25 · BEE 5-Star rated · Argon-filled cavities · Low-E coating · UV protection',
   icon: 'FireIcon',
-  image: "https://img.rocket.new/generatedImages/rocket_gen_img_1505ab465-1776185817997.png",
+  image: "/assets/images/4.png",
   imageAlt: 'Cool comfortable Indian living room interior with glowing lamp light, UPVC windows blocking harsh sunlight, comfortable atmosphere',
   reverse: true,
   accent: '#5B7FA8'
@@ -43,7 +43,7 @@ const features = [
   body: 'Tested to Class 4 wind resistance (1050 Pa), Class E900 water tightness, and Class 4 air permeability. Our multi-point locking systems and reinforced corners ensure your home stays sealed through monsoon storms, coastal humidity, and desert dust.',
   detail: 'Class 4 wind resistance · E900 watertight seal · Anti-corrosion hardware · UV-stable colour finish · Dust-proof seals',
   icon: 'CloudIcon',
-  image: "https://img.rocket.new/generatedImages/rocket_gen_img_12e8d6ff1-1776519483586.png",
+  image: "/assets/images/monsoon-and-dust-resistance.png",
   imageAlt: 'Modern Indian house exterior in heavy monsoon rain, UPVC windows completely dry inside, dramatic stormy sky background, well-lit interior visible',
   reverse: false,
   accent: '#8BA7C7'
@@ -145,7 +145,7 @@ export default function FeaturesStorytelling() {
             Every detail engineered to perform.
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground mt-4 max-w-xl mx-auto leading-relaxed">
-            Three performance pillars that set Keepexa Interior's apart — engineered specifically for India's demanding climate.
+            Three performance pillars that set Keepexa Interior apart — engineered specifically for India's demanding climate.
           </p>
         </motion.div>
 

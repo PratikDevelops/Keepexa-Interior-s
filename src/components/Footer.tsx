@@ -33,14 +33,14 @@ const supportLinks = [
   { label: 'Book Site Survey',    href: '/contact' },
   { label: 'Installation Guide',  href: '/support/installation' },
   { label: 'Warranty Policy',     href: '/support/warranty' },
-  { label: 'Privacy Policy',      href: '/privacy' },
-  { label: 'Terms of Service',    href: '/terms' },
+  { label: 'Privacy Policy',      href: '/legal/privacy-policy' },
+  { label: 'Terms of Service',    href: '/legal/terms-of-service' },
 ];
 
 const contactItems = [
-  { icon: 'MapPinIcon',   value: 'Plot 12, Kandivali, Mumbai – 400067, Maharashtra' },
-  { icon: 'PhoneIcon',    value: '+91 98765 43210' },
-  { icon: 'EnvelopeIcon', value: 'hello@Keepexa_Interiors.com' },
+  { icon: 'MapPinIcon',   value: 'Maruti Niwas, BSNL colony, Opp IIT Main Gate, Powai, Mumbai – 400076, Maharashtra' },
+  { icon: 'PhoneIcon',    value: '+91 73710 73711' },
+  { icon: 'EnvelopeIcon', value: 'admin@keepexa.in' },
   { icon: 'ClockIcon',    value: 'Mon – Sat, 9 am – 7 pm IST' },
 ];
 
@@ -168,13 +168,13 @@ export default function Footer() {
             <FadeUp delay={0.05} className="flex flex-col gap-6">
               {/* Logo */}
               <Link href="/homepage" className="flex items-center gap-2.5 group w-fit">
-                <AppLogo size={130} onClick={() => {}} className="transition-transform duration-300 group-hover:scale-105" />
+                <AppLogo size={140} onClick={() => {}} className="transition-transform duration-300 group-hover:scale-105" />
               </Link>
 
               {/* Tagline */}
               <p className="text-sm text-muted-foreground leading-relaxed">
                 India's premium UPVC window &amp; door manufacturer. Engineered at our ISO-certified
-                Pune facility, installed by our own team.
+                Mumbai facility, installed by our own team.
               </p>
 
               {/* Cert badges — 2×2 fixed-width grid */}
@@ -242,7 +242,7 @@ export default function Footer() {
 
                   {/* WhatsApp CTA */}
                   <a
-                    href="https://wa.me/919876543210"
+                    href="https://wa.me/+917371073711"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-1 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-sm font-600 text-emerald-600 hover:bg-emerald-500/15 transition-colors duration-200 w-fit"
@@ -263,13 +263,13 @@ export default function Footer() {
         <FadeUp delay={0.3}>
           <div className="py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-xs text-muted-foreground text-center sm:text-left">
-              © {currentYear} Keepexa Interior's Pvt. Ltd. All rights reserved. Made with care in Pune, India.
+              © {currentYear} Keepexa Interior Pvt. Ltd. All rights reserved. Made with care in Mumbai, India.
             </p>
             <div className="flex items-center gap-4 flex-wrap justify-center">
               {[
-                { label: 'Privacy Policy', href: '/privacy' },
-                { label: 'Terms of Service', href: '/terms' },
-                { label: 'Sitemap', href: '/sitemap' },
+                { label: 'Privacy Policy', href: '/legal/privacy-policy' },
+                { label: 'Terms of Service', href: '/legal/terms-of-service' },
+                { label: 'Sitemap', href: '/legal/sitemap' },
               ].map((l, i) => (
                 <React.Fragment key={l.label}>
                   {i > 0 && <span className="w-px h-3 bg-border/60 shrink-0" />}

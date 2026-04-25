@@ -117,7 +117,7 @@ Available in 40+ RAL colours, woodgrain foils, and dual-colour options (white in
     image: 'https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png',
     imageAlt: 'Premium UPVC tilt and turn window in tilt position',
     badge: { label: "Editor's Choice", variant: 'eco' },
-    startingPrice: '₹11,600',
+    startingPrice: '₹750',
     priceUnit: 'per sq ft',
     rating: 4.9,
     reviews: 445,
@@ -160,7 +160,7 @@ Standard 5-chamber 60 mm profile can be upgraded to our 6-chamber 70 mm system f
     image: 'https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png',
     imageAlt: 'Classic white UPVC casement window, chrome handle, open position',
     badge: { label: 'Best Seller', variant: 'popular' },
-    startingPrice: '₹8,400',
+    startingPrice: '₹550',
     priceUnit: 'per sq ft',
     rating: 4.9,
     reviews: 612,
@@ -203,7 +203,7 @@ Our 4-chamber profile is engineered specifically for the Indian coastal and mons
     image: 'https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png',
     imageAlt: 'UPVC horizontal sliding window overlooking balcony, white frame',
     badge: { label: 'Most Popular', variant: 'popular' },
-    startingPrice: '₹7,800',
+    startingPrice: '₹400',
     priceUnit: 'per sq ft',
     rating: 4.7,
     reviews: 834,
@@ -246,7 +246,7 @@ Commonly specified for master bedroom balcony doors, living room feature opening
     image: 'https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png',
     imageAlt: 'UPVC French casement double window open wide, white frame',
     badge: { label: 'Premium', variant: 'premium' },
-    startingPrice: '₹14,200',
+    startingPrice: '₹650',
     priceUnit: 'per sq ft',
     rating: 4.8,
     reviews: 289,
@@ -289,7 +289,7 @@ Single panels up to 3000 × 2400 mm and 400 kg. 2, 3, and 4-panel configurations
     image: 'https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png',
     imageAlt: 'Large UPVC lift and slide patio door panel, panoramic garden view',
     badge: { label: 'New', variant: 'new' },
-    startingPrice: '₹32,000',
+    startingPrice: '₹2500',
     priceUnit: 'per sq ft',
     rating: 4.9,
     reviews: 97,
@@ -331,7 +331,7 @@ Our Fixed Picture is available in any shape: rectangle, arch, circle, triangle, 
 Standard 5-chamber profile is upgradeable to 6-chamber for enhanced performance. Maximum single pane size limited only by the glass manufacturer's capabilities — we have installed 5000 × 2500 mm lites on commercial projects.`,
     image: 'https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png',
     imageAlt: 'Large fixed UPVC picture window, minimal white frame, mountain view',
-    startingPrice: '₹5,900',
+    startingPrice: '₹500',
     priceUnit: 'per sq ft',
     rating: 4.8,
     reviews: 318,
@@ -342,7 +342,7 @@ Standard 5-chamber profile is upgradeable to 6-chamber for enhanced performance.
     features: [
       { icon: 'ThermometerIcon', title: 'Highest Thermal Performance', body: 'No opening hardware means no seal degradation over time. U-Value 0.8 W/m²K with triple glazing; best figure in our entire range.' },
       { icon: 'SoundIcon', title: 'Maximum Acoustic Isolation', body: 'No gaps, no seals to fail, no moving parts: Rw 48 dB as standard with 6.4/16/6.4 laminated IGU.' },
-      { icon: 'RulerIcon', title: 'Custom Shapes', body: 'CNC-welded corners allow any polygon. Arches, circles, and trapezia router-cut in our Pune factory. Lead time 10 working days.' },
+      { icon: 'RulerIcon', title: 'Custom Shapes', body: 'CNC-welded corners allow any polygon. Arches, circles, and trapezia router-cut in our Mumbai factory. Lead time 10 working days.' },
       { icon: 'LayersIcon', title: 'Structural Silicone Joints', body: 'Glass-to-glass corners with 5 mm silicone butt joint eliminate frame sections at corners — the closest thing to no frame at all.' },
     ],
     specs: [
@@ -374,7 +374,7 @@ Options include: casement or tilt-turn sidelights, integrated painted MDF seat b
     image: 'https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png',
     imageAlt: 'White UPVC bay window projecting from living room wall, classic styling',
     badge: { label: 'Premium', variant: 'premium' },
-    startingPrice: '₹42,000',
+    startingPrice: '₹600',
     priceUnit: 'set',
     rating: 4.7,
     reviews: 156,
@@ -417,7 +417,7 @@ Ideal for utility rooms, bathrooms, stairwells, kitchens, and any space where pe
     image: 'https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png',
     imageAlt: 'UPVC louvre vent window with angled glass blades in tropical setting',
     badge: { label: 'Eco Choice', variant: 'eco' },
-    startingPrice: '₹6,200',
+    startingPrice: '₹550',
     priceUnit: 'per sq ft',
     rating: 4.6,
     reviews: 203,
@@ -736,7 +736,7 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
 
                 {/* Trust badges */}
                 <div className="mt-5 pt-4 border-t border-border/40 flex items-center justify-center gap-4">
-                  {['ISO Certified', 'Made in Pune', '10-yr Warranty'].map((t) => (
+                  {['ISO Certified', 'Made in Mumbai', '10-yr Warranty'].map((t) => (
                     <span key={t} className="text-[9px] font-semibold text-muted-foreground uppercase tracking-wide flex items-center gap-1">
                       <span className="w-1 h-1 rounded-full bg-primary/60" />
                       {t}

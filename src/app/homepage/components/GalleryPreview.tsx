@@ -25,9 +25,9 @@ const projects = [
 },
 {
   src: "https://img.rocket.new/generatedImages/rocket_gen_img_1bf66db68-1776519482508.png",
-  alt: 'Heritage bungalow in Pune with sympathetic white UPVC sash windows, traditional architecture, period-appropriate style',
+  alt: 'Heritage bungalow in Mumbai with sympathetic white UPVC sash windows, traditional architecture, period-appropriate style',
   title: 'Koregaon Park Bungalow',
-  location: 'Pune, Maharashtra',
+  location: 'Mumbai, Maharashtra',
   type: 'Heritage Style',
   span: ''
 },

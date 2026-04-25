@@ -3,13 +3,11 @@
 @tailwind utilities;
 
 :root {
-  /* Backgrounds & Surface */
-  --background: #F9F8F6;
+  --background: #FCF5F5;
   --foreground: #14515E;
   --card: #FFFFFF;
   --card-foreground: #14515E;
 
-  /* Primary (Action Color - Your Deep Red) */
   --primary: #B32025;
   --primary-foreground: #FFFFFF;
 
@@ -19,14 +17,12 @@
   --accent: #14515E; 
   --accent-foreground: #FFFFFF;
 
-
-  --muted: #F0EDE8;
+  --muted: #F5E9E9; 
   --muted-foreground: #6B7280;
-  --border: #E2DDD7;
-  --input: #EAE8E3;
-  --ring: #CC8229; /* Using Gold for the focus ring */
+  --border: #EBDADA;
+  --input: #F0E4E4;
+  --ring: #CC8229;
 
-  /* Branding / Extra Utility */
   --brand-teal: #14515E;
   --brand-gold: #CC8229;
   --brand-red: #B32025;
