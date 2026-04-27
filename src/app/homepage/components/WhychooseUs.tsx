@@ -9,13 +9,13 @@ const reasons = [
   {
     icon: 'CubeTransparentIcon',
     title: 'German-Grade UPVC Profiles',
-    desc: 'We use only A-grade multi-chamber UPVC profiles sourced from certified European suppliers — the same spec used in Scandinavian passive homes. No recycled filler, ever.',
+    desc: 'We use only A-grade multi-chamber UPVC profiles sourced from certified European suppliers the same spec used in Scandinavian passive homes. No recycled filler, ever.',
     badge: 'Material Quality',
   },
   {
     icon: 'WrenchScrewdriverIcon',
     title: 'Factory-to-Fit Control',
-    desc: 'Every window is manufactured at our own ISO-certified Mumbai plant and installed by our own salaried team. No resellers, no subcontractors — full accountability at every step.',
+    desc: 'Every window is manufactured at our own ISO-certified Mumbai plant and installed by our own salaried team. No resellers, no subcontractors full accountability at every step.',
     badge: 'Direct Ownership',
   },
   {
@@ -27,7 +27,7 @@ const reasons = [
   {
     icon: 'ShieldCheckIcon',
     title: '10-Year Warranty + 40-Year Guarantee',
-    desc: 'We back every installation with a full 10-year product warranty and a 40-year performance guarantee on profiles. If it fails, we fix it — no questions asked.',
+    desc: 'We back every installation with a full 10-year product warranty and a 40-year performance guarantee on profiles. If it fails, we fix it no questions asked.',
     badge: 'Long-Term Assurance',
   },
   {
@@ -39,7 +39,7 @@ const reasons = [
   {
     icon: 'MapPinIcon',
     title: 'Pan-India Service Network',
-    desc: 'With service centres in Mumbai, Delhi, Bengaluru, Hyderabad, Chennai, and Mumbai, post-installation support is never more than a call away — wherever you are in India.',
+    desc: 'With service centres in Mumbai, Delhi, Bengaluru, Hyderabad, Chennai, and Mumbai, post-installation support is never more than a call away wherever you are in India.',
     badge: 'Nationwide Reach',
   },
 ];
@@ -177,7 +177,7 @@ export default function WhyChooseUs() {
               <p className="text-sm text-muted-foreground mt-1">Book a free home survey — no obligation, no pressure.</p>
             </div>
             <div className="flex items-center gap-3 shrink-0">
-              <Link href="/contact" className="btn-primary">
+              <Link href="/homepage#contact" className="btn-primary">
                 Book Free Survey
                 <Icon name="ArrowRightIcon" size={16} />
               </Link>

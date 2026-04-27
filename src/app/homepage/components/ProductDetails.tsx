@@ -459,7 +459,7 @@ const badgeStyles: Record<string, string> = {
 
 function Badge({ label, variant }: { label: string; variant: string }) {
   return (
-    <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full border ${badgeStyles[variant]}`}>
+    <span className={`inline-flex items-center gap-1.5 text-xs font-700 px-3 py-1 rounded-full border ${badgeStyles[variant]}`}>
       <span className="w-1.5 h-1.5 rounded-full bg-current opacity-70 shrink-0" />
       {label}
     </span>
@@ -503,16 +503,16 @@ function RelatedCard({ product }: { product: ProductDetail }) {
           className={`object-cover transition-transform duration-700 ease-out ${hovered ? 'scale-[1.08]' : 'scale-100'}`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-        <span className="absolute top-3 left-3 text-[10px] font-semibold text-white bg-black/40 backdrop-blur-sm px-2 py-0.5 rounded-md">
+        <span className="absolute top-3 left-3 text-[10px] font-500 text-white bg-black/40 backdrop-blur-sm px-2 py-0.5 rounded-md">
           {product.category}
         </span>
       </div>
       <div className="p-4">
-        <p className="text-sm font-bold text-foreground leading-tight">{product.name}</p>
-        <p className="text-xs text-muted-foreground mt-1 leading-snug line-clamp-2">{product.tagline}</p>
+        <p className="text-sm font-700 text-foreground leading-tight">{product.name}</p>
+        <p className="text-xs font-400 text-muted-foreground mt-1 leading-snug line-clamp-2">{product.tagline}</p>
         <div className="flex items-center justify-between mt-3 pt-3 border-t border-border/40">
-          <p className="text-sm font-bold text-foreground">{product.startingPrice}</p>
-          <span className="text-xs text-primary font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+          <p className="text-sm font-700 text-foreground">{product.startingPrice}</p>
+          <span className="text-xs font-600 text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
             View <Icon name="ArrowRightIcon" size={11} />
           </span>
         </div>
@@ -537,8 +537,8 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
   if (!product) {
     return (
       <main className="min-h-screen bg-background flex flex-col items-center justify-center gap-4 px-4">
-        <p className="text-lg font-bold text-foreground">Product not found</p>
-        <p className="text-xs text-muted-foreground font-mono bg-secondary px-3 py-1 rounded">
+        <p className="text-lg font-700 text-foreground">Product not found</p>
+        <p className="text-xs font-400 text-muted-foreground font-mono bg-secondary px-3 py-1 rounded">
           slug: &quot;{slug}&quot;
         </p>
         <Link href="/#products" className="btn-primary inline-flex items-center gap-2">
@@ -567,7 +567,6 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
             fill
             className="object-cover"
           />
-          {/* ✅ FIX: Stronger left gradient so text always sits on a legible base */}
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/30" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
         </div>
@@ -586,15 +585,14 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                 animate={heroView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.05 }}
               >
-                {/* ✅ FIX: Opaque white background on pills for legibility */}
                 <Link
                   href="/#products"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground hover:text-foreground transition-colors bg-background/95 border border-border/70 px-3 py-1.5 rounded-full shadow-sm"
+                  className="inline-flex items-center gap-1.5 text-xs font-500 text-foreground hover:text-foreground transition-colors bg-background/95 border border-border/70 px-3 py-1.5 rounded-full shadow-sm"
                 >
                   <Icon name="ArrowLeftIcon" size={11} />
                   All Products
                 </Link>
-                <span className="text-xs font-semibold text-foreground bg-background/95 border border-border/70 px-3 py-1.5 rounded-full shadow-sm">
+                <span className="text-xs font-500 text-foreground bg-background/95 border border-border/70 px-3 py-1.5 rounded-full shadow-sm">
                   {product.category}
                 </span>
                 {product.badge && <Badge label={product.badge.label} variant={product.badge.variant} />}
@@ -606,22 +604,20 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                 animate={heroView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                {/* ✅ FIX: Subtle text-shadow keeps heading crisp on any image */}
                 <h1
-                  className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.02]"
+                  className="text-4xl sm:text-5xl lg:text-6xl font-800 tracking-tight text-foreground leading-[1.02]"
                   style={{ textShadow: '0 2px 12px rgba(0,0,0,0.12)' }}
                 >
                   {product.name}
                 </h1>
-                <p className="mt-3 text-base sm:text-lg font-semibold text-primary leading-snug">
+                <p className="mt-3 text-base sm:text-lg font-600 text-primary leading-snug">
                   {product.tagline}
                 </p>
               </motion.div>
 
               {/* Description */}
-              {/* ✅ FIX: text-foreground/90 instead of text-muted-foreground for hero contrast */}
               <motion.p
-                className="text-sm sm:text-base text-foreground/90 leading-relaxed max-w-lg"
+                className="text-sm sm:text-base font-400 text-foreground/90 leading-relaxed max-w-lg"
                 style={{ textShadow: '0 1px 8px rgba(0,0,0,0.10)' }}
                 initial={{ opacity: 0, y: 14 }}
                 animate={heroView ? { opacity: 1, y: 0 } : {}}
@@ -638,9 +634,8 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <Stars rating={product.rating} />
-                <span className="text-sm font-bold text-foreground">{product.rating}</span>
-                {/* ✅ FIX: text-foreground/80 instead of text-muted-foreground */}
-                <span className="text-sm text-foreground/80">({product.reviews} verified reviews)</span>
+                <span className="text-sm font-700 text-foreground">{product.rating}</span>
+                <span className="text-sm font-400 text-foreground/80">({product.reviews} verified reviews)</span>
               </motion.div>
 
               {/* Highlight chips */}
@@ -651,10 +646,9 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                 transition={{ duration: 0.5, delay: 0.25 }}
               >
                 {product.highlights.map((h) => (
-                  // ✅ FIX: bg-background/95 (nearly opaque) + shadow-md for chip legibility
                   <span
                     key={h}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground bg-background/95 backdrop-blur-sm border border-border/80 px-3 py-1.5 rounded-full shadow-md"
+                    className="inline-flex items-center gap-1.5 text-xs font-500 text-foreground bg-background/95 backdrop-blur-sm border border-border/80 px-3 py-1.5 rounded-full shadow-md"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                     {h}
@@ -675,7 +669,7 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                 </Link>
                 <Link
                   href="/book-survey"
-                  className="flex-1 flex items-center justify-center px-4 py-2.5 rounded-xl border border-border/80 text-sm font-semibold text-foreground hover:bg-secondary/60 transition-colors"
+                  className="flex-1 flex items-center justify-center px-4 py-2.5 rounded-xl border border-border/80 text-sm font-500 text-foreground hover:bg-secondary/60 transition-colors"
                 >
                   Book Survey
                 </Link>
@@ -698,24 +692,21 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                     { label: 'Profile', value: product.profiles },
                   ].map((s) => (
                     <div key={s.label} className="flex flex-col items-center gap-1 px-2 py-3.5 rounded-2xl bg-secondary/80 border border-border/30">
-                      <span className="text-xs font-bold text-primary text-center leading-tight">{s.value}</span>
-                      <span className="text-[9px] font-semibold text-muted-foreground uppercase tracking-widest">{s.label}</span>
+                      <span className="text-xs font-700 text-primary text-center leading-tight">{s.value}</span>
+                      <span className="text-[9px] font-500 text-muted-foreground uppercase tracking-widest">{s.label}</span>
                     </div>
                   ))}
                 </div>
 
-                {/* Divider */}
                 <div className="h-px bg-border/50 mb-5" />
 
                 {/* Price */}
                 <div className="mb-5">
-                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em] mb-1">Starting from</p>
-                  <div className="flex items-baseline gap-2">
-                    <p className="text-4xl font-extrabold text-foreground tracking-tight leading-none">
-                      {product.startingPrice}
-                    </p>
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-1.5">{product.priceUnit} · including installation</p>
+                  <p className="text-[10px] font-700 text-muted-foreground uppercase tracking-[0.2em] mb-1">Starting from</p>
+                  <p className="text-4xl font-800 text-foreground tracking-tight leading-none">
+                    {product.startingPrice}
+                  </p>
+                  <p className="text-xs font-400 text-muted-foreground mt-1.5">{product.priceUnit} · including installation</p>
                 </div>
 
                 {/* CTAs */}
@@ -724,18 +715,12 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                     Configure &amp; Get Quote
                     <Icon name="ArrowRightIcon" size={15} />
                   </Link>
-                  <Link
-                    href="/book-survey"
-                    className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-border/70 text-sm font-semibold text-foreground hover:bg-secondary/60 transition-colors"
-                  >
-                    Book Free Survey
-                  </Link>
                 </div>
 
                 {/* Trust badges */}
                 <div className="mt-5 pt-4 border-t border-border/40 flex items-center justify-center gap-4">
                   {['ISO Certified', 'Made in Mumbai', '10-yr Warranty'].map((t) => (
-                    <span key={t} className="text-[9px] font-semibold text-muted-foreground uppercase tracking-wide flex items-center gap-1">
+                    <span key={t} className="text-[9px] font-500 text-muted-foreground uppercase tracking-wide flex items-center gap-1">
                       <span className="w-1 h-1 rounded-full bg-primary/60" />
                       {t}
                     </span>
@@ -763,9 +748,9 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
             <div className="lg:col-span-7">
               <div className="flex items-center gap-3 mb-6">
                 <span className="block w-6 h-0.5 bg-primary rounded-full" />
-                <span className="text-xs font-bold text-primary uppercase tracking-[0.18em]">About This Product</span>
+                <span className="section-label">About This Product</span>
               </div>
-              <div className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
+              <div className="space-y-4 text-sm sm:text-base font-400 text-muted-foreground leading-relaxed">
                 {product.longDescription.split('\n\n').map((para, i) => (
                   <p key={i}>{para.trim()}</p>
                 ))}
@@ -774,7 +759,7 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
 
             {/* Applications */}
             <div className="lg:col-span-5">
-              <p className="text-xs font-bold text-muted-foreground uppercase tracking-[0.18em] mb-4">Best Suited For</p>
+              <p className="text-xs font-700 text-muted-foreground uppercase tracking-[0.18em] mb-4">Best Suited For</p>
               <div className="flex flex-col gap-2.5">
                 {product.applications.map((app, i) => (
                   <motion.div
@@ -787,7 +772,7 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                     <div className="w-7 h-7 rounded-xl bg-primary/10 border border-primary/10 flex items-center justify-center shrink-0">
                       <Icon name="CheckIcon" size={11} className="text-primary" />
                     </div>
-                    <span className="text-sm font-semibold text-foreground">{app}</span>
+                    <span className="text-sm font-600 text-foreground">{app}</span>
                   </motion.div>
                 ))}
               </div>
@@ -801,15 +786,15 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                     { label: 'Profile', value: product.profiles },
                   ].map((s) => (
                     <div key={s.label} className="flex flex-col items-center gap-1 px-2 py-3 rounded-xl bg-secondary/80">
-                      <span className="text-xs font-bold text-primary text-center leading-tight">{s.value}</span>
-                      <span className="text-[9px] font-semibold text-muted-foreground uppercase tracking-widest">{s.label}</span>
+                      <span className="text-xs font-700 text-primary text-center leading-tight">{s.value}</span>
+                      <span className="text-[9px] font-500 text-muted-foreground uppercase tracking-widest">{s.label}</span>
                     </div>
                   ))}
                 </div>
                 <div className="border-t border-border/40 pt-4">
-                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.15em]">Starting from</p>
-                  <p className="text-3xl font-extrabold text-foreground mt-1">{product.startingPrice}</p>
-                  <p className="text-xs text-muted-foreground mt-1">{product.priceUnit} · including installation</p>
+                  <p className="text-[10px] font-700 text-muted-foreground uppercase tracking-[0.15em]">Starting from</p>
+                  <p className="text-3xl font-800 text-foreground mt-1">{product.startingPrice}</p>
+                  <p className="text-xs font-400 text-muted-foreground mt-1">{product.priceUnit} · including installation</p>
                 </div>
               </div>
             </div>
@@ -821,11 +806,10 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
             animate={bodyView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            {/* Section header */}
             <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
               <div className="flex items-center gap-3">
                 <span className="block w-6 h-0.5 bg-primary rounded-full" />
-                <span className="text-xs font-bold text-primary uppercase tracking-[0.18em]">Details</span>
+                <span className="section-label">Details</span>
               </div>
 
               {/* Tab switcher */}
@@ -834,7 +818,7 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                   <button
                     key={t}
                     onClick={() => setTab(t)}
-                    className={`relative px-5 py-2 rounded-xl text-sm font-semibold transition-colors duration-200 ${
+                    className={`relative px-5 py-2 rounded-xl text-sm font-500 transition-colors duration-200 ${
                       tab === t ? 'text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
                     }`}
                   >
@@ -873,8 +857,8 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                         <Icon name={f.icon} size={20} className="text-primary" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-bold text-foreground mb-1.5">{f.title}</p>
-                        <p className="text-xs text-muted-foreground leading-relaxed">{f.body}</p>
+                        <p className="text-sm font-700 text-foreground mb-1.5">{f.title}</p>
+                        <p className="text-xs font-400 text-muted-foreground leading-relaxed">{f.body}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -896,8 +880,8 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3, delay: i * 0.05 }}
                     >
-                      <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-[0.18em]">{s.label}</span>
-                      <span className="text-sm sm:text-base font-bold text-foreground leading-tight">{s.value}</span>
+                      <span className="text-[9px] font-700 text-muted-foreground uppercase tracking-[0.18em]">{s.label}</span>
+                      <span className="text-sm sm:text-base font-700 text-foreground leading-tight">{s.value}</span>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -915,9 +899,9 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
               <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
                 <div className="flex items-center gap-3">
                   <span className="block w-6 h-0.5 bg-primary rounded-full" />
-                  <span className="text-xs font-bold text-primary uppercase tracking-[0.18em]">You Might Also Consider</span>
+                  <span className="section-label">You Might Also Consider</span>
                 </div>
-                <Link href="/#products" className="text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+                <Link href="/#products" className="text-xs font-500 text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
                   View all <Icon name="ArrowRightIcon" size={11} />
                 </Link>
               </div>
@@ -936,17 +920,16 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
             animate={bodyView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.24 }}
           >
-            {/* Background accent */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
             <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute -bottom-20 -left-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative flex flex-col sm:flex-row items-center justify-between gap-6 p-8 sm:p-10">
               <div className="text-center sm:text-left">
-                <p className="text-xl sm:text-2xl font-extrabold text-foreground leading-tight">
+                <p className="text-xl sm:text-2xl font-800 text-foreground leading-tight">
                   Ready for a quote on {product.name}?
                 </p>
-                <p className="text-sm text-muted-foreground mt-2 max-w-md">
+                <p className="text-sm font-400 text-muted-foreground mt-2 max-w-md">
                   Our specialists visit, measure, and recommend — completely free. No obligation.
                 </p>
               </div>
@@ -954,12 +937,6 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                 <Link href="/product-configurator" className="btn-primary whitespace-nowrap">
                   Configure Windows
                   <Icon name="ArrowRightIcon" size={16} />
-                </Link>
-                <Link
-                  href="/book-survey"
-                  className="px-5 py-2.5 rounded-xl border border-border/80 text-sm font-semibold text-foreground hover:bg-secondary/60 transition-colors whitespace-nowrap"
-                >
-                  Book Survey
                 </Link>
               </div>
             </div>

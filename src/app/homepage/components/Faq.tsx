@@ -357,30 +357,12 @@ export default function Faq() {
                   Speak directly with a Keepexa Interior specialist — not a chatbot, not a call centre.
                 </p>
               </div>
-              <Link href="/contact" className="btn-primary self-start">
+              <Link href="/homepage#contact" className="btn-primary self-start">
                 Talk to Us
                 <Icon name="ArrowRightIcon" size={15} />
               </Link>
             </div>
 
-            {/* Book survey nudge */}
-            <div className="rounded-3xl border border-border/60 bg-card p-6 flex flex-col gap-4">
-              <div className="w-11 h-11 rounded-xl bg-accent/8 flex items-center justify-center">
-                <Icon name="HomeIcon" size={20} className="text-accent" />
-              </div>
-              <div>
-                <p className="text-base font-700 text-foreground">Free Home Survey</p>
-                <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
-                  Let a specialist visit, measure, and give you a fixed written quote — no obligation.
-                </p>
-              </div>
-              <Link
-                href="/book-survey"
-                className="px-5 py-2.5 self-start rounded-xl border border-border/80 text-sm font-600 text-foreground hover:bg-secondary/60 transition-colors"
-              >
-                Book a Survey
-              </Link>
-            </div>
 
             {/* Quick stats */}
             <div className="rounded-3xl border border-border/60 bg-card p-5 grid grid-cols-2 gap-3">

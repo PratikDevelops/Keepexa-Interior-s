@@ -29,7 +29,7 @@ const features = [
   body: 'Keepexa Interiors windows achieve SHGC values as low as 0.25, blocking up to 75% of solar heat gain. Our thermally broken frames eliminate heat bridging and keep interiors cool even in 45°C Indian summers without overworking your AC.',
   detail: 'SHGC from 0.25 · BEE 5-Star rated · Argon-filled cavities · Low-E coating · UV protection',
   icon: 'FireIcon',
-  image: "/assets/images/4.png",
+  image: "/assets/images/thermal-efficiency.png",
   imageAlt: 'Cool comfortable Indian living room interior with warm lighting, UPVC windows blocking harsh sunlight, relaxed indoor atmosphere',
   reverse: true,
   accent: '#5B7FA8'

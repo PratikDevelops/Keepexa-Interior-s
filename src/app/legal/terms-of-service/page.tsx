@@ -288,7 +288,7 @@ export default function TermsPage() {
             </a>
           </p>
           <div className="flex items-center gap-3">
-            <Link href="/privacy" className="text-xs font-600 text-muted-foreground hover:text-primary transition-colors">
+            <Link href="/legal/privacy-policy" className="text-xs font-600 text-muted-foreground hover:text-primary transition-colors">
               Privacy Policy →
             </Link>
             <span className="w-px h-3 bg-border/60" />

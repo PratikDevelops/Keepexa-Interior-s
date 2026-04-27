@@ -112,9 +112,9 @@ export default function TestimonialsSection() {
           <div className="relative z-10 flex flex-col items-center gap-5 sm:gap-6">
             <div className="flex -space-x-3 mb-2">
               {[
-              { src: "https://img.rocket.new/generatedImages/rocket_gen_img_1a257243a-1767409969984.png", alt: 'Satisfied Keepexa Interiors customer' },
-              { src: "https://img.rocket.new/generatedImages/rocket_gen_img_12d6a7fd1-1772128506433.png", alt: 'Happy homeowner after installation' },
-              { src: "https://img.rocket.new/generatedImages/rocket_gen_img_11b9b7153-1772991940916.png", alt: 'Pleased customer with new windows' }]?.
+              { src: "/assets/images/testimonial-1.png", alt: 'Satisfied Keepexa Interiors customer' },
+              { src: "/assets/images/testimonial-2.png", alt: 'Happy homeowner after installation' },
+              { src: "/assets/images/testimonial-3.png", alt: 'Pleased customer with new windows' }].
               map((img, i) =>
               <AppImage
                 key={i}
@@ -137,11 +137,6 @@ export default function TestimonialsSection() {
                 className="bg-white text-primary font-700 px-6 sm:px-8 py-3.5 rounded-xl hover:bg-accent/20 hover:text-black transition-all duration-300 text-sm flex items-center gap-2 justify-center">
                 Start Configuring
                 <Icon name="ArrowRightIcon" size={16} />
-              </Link>
-              <Link
-                href="/homepage#contact"
-                className="border border-white/30 text-white font-600 px-6 sm:px-8 py-3.5 rounded-xl hover:bg-white/10 transition-all duration-300 text-sm flex items-center gap-2 justify-center">
-                Book Free Survey
               </Link>
             </div>
           </div>

@@ -36,7 +36,7 @@ export default function ContactSection() {
                 Let&apos;s talk about your project.
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed mt-4">
-                Whether you have a question about products, need a quote for a project, or want to book a free home survey — we&apos;re here. Serving Mumbai, Delhi, Bengaluru, Hyderabad, Chennai, Mumbai and more.
+                Whether you have a question about products, need a quote for a project, or want to book a free home survey we&apos;re here. Serving Mumbai, Delhi, Bengaluru, Hyderabad, Chennai, Mumbai and more.
               </p>
             </div>
 

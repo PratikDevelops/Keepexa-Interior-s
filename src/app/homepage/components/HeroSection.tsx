@@ -7,24 +7,24 @@ import AppImage from '@/components/ui/AppImage';
 import Icon from '@/components/ui/AppIcon';
 
 const heroImages = [
-{
-  src: "https://img.rocket.new/generatedImages/rocket_gen_img_15e534dc7-1772941123727.png",
-  alt: 'Modern Indian home exterior with large floor-to-ceiling UPVC windows, bright daylight, clean contemporary architecture',
-  span: 'col-span-5 row-span-6',
-  label: 'Residential',
-  sublabel: 'Casement Series'
-},
-{
-  src: "https://img.rocket.new/generatedImages/rocket_gen_img_17d7838de-1774978562858.png",
-  alt: 'Bright airy Indian living room interior with wide panoramic UPVC windows flooding space with natural light, minimal decor',
-  span: 'col-span-7 row-span-3',
-  badge: 'Most Popular'
-},
-{
-  src: "https://img.rocket.new/generatedImages/rocket_gen_img_1ebc3d0ea-1772509195309.png",
-  alt: 'Contemporary Indian kitchen with slim-frame UPVC windows overlooking garden, clean white surfaces, natural light',
-  span: 'col-span-4 row-span-3'
-}];
+  {
+    src: "https://img.rocket.new/generatedImages/rocket_gen_img_15e534dc7-1772941123727.png",
+    alt: 'Modern Indian home exterior with large floor-to-ceiling UPVC windows, bright daylight, clean contemporary architecture',
+    span: 'col-span-5 row-span-6',
+    label: 'Residential',
+    sublabel: 'Casement Series'
+  },
+  {
+    src: "https://img.rocket.new/generatedImages/rocket_gen_img_17d7838de-1774978562858.png",
+    alt: 'Bright airy Indian living room interior with wide panoramic UPVC windows flooding space with natural light, minimal decor',
+    span: 'col-span-7 row-span-3',
+    badge: 'Most Popular'
+  },
+  {
+    src: "https://img.rocket.new/generatedImages/rocket_gen_img_1ebc3d0ea-1772509195309.png",
+    alt: 'Contemporary Indian kitchen with slim-frame UPVC windows overlooking garden, clean white surfaces, natural light',
+    span: 'col-span-4 row-span-3'
+  }];
 
 
 export default function HeroSection() {
@@ -42,9 +42,9 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}>
-          
+
           {/* Status badge */}
-          <div className="inline-flex items-center gap-2 self-start glass-card px-3.5 py-2 rounded-full border border-border/80">
+          <div className="mt-6 sm:mt-0 inline-flex items-center gap-2 self-start glass-card px-3.5 py-2 rounded-full border border-border/80">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
@@ -60,7 +60,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed font-400 max-w-lg">
-            Keepexa Interior UPVC windows combine acoustic engineering, thermal precision, and architectural elegance — built to last 40 years in India's diverse climate, from coastal humidity to extreme heat.
+            Keepexa Interior UPVC windows combine acoustic engineering, thermal precision, and architectural elegance built to last 40 years in India's diverse climate, from coastal humidity to extreme heat.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 mt-1">
@@ -77,25 +77,25 @@ export default function HeroSection() {
           <div className="pt-5 border-t border-border/60 flex flex-wrap items-center gap-4 mt-2">
             <div className="flex -space-x-2.5">
               {[
-              { src: "https://img.rocket.new/generatedImages/rocket_gen_img_1ded1a746-1772813323977.png", alt: 'Satisfied homeowner, woman with short dark hair smiling' },
-              { src: "https://img.rocket.new/generatedImages/rocket_gen_img_1ba323a66-1772263858519.png", alt: 'Happy customer, man with beard in natural light' },
-              { src: "https://img.rocket.new/generatedImages/rocket_gen_img_1beb1ed5b-1772900933628.png", alt: 'Pleased homeowner, man with glasses smiling' },
-              { src: "https://img.rocket.new/generatedImages/rocket_gen_img_1d387af1e-1772073678128.png", alt: 'Satisfied customer, woman with brown hair' }]?.
-              map((img, i) =>
-              <AppImage
-                key={i}
-                src={img?.src}
-                alt={img?.alt}
-                width={40}
-                height={40}
-                className="w-10 h-10 rounded-full border-2 border-background object-cover" />
+                { src: "/assets/images/testimonial-1.png", alt: 'Satisfied homeowner, woman with short dark hair smiling' },
+                { src: "/assets/images/testimonial-2.png", alt: 'Happy customer, man with beard in natural light' },
+                { src: "/assets/images/testimonial-3.png", alt: 'Pleased homeowner, man with glasses smiling' },
+                { src: "/assets/images/testimonial-4.png", alt: 'Satisfied customer, woman with brown hair' }].
+                map((img, i) =>
+                  <AppImage
+                    key={i}
+                    src={img?.src}
+                    alt={img?.alt}
+                    width={40}
+                    height={40}
+                    className="w-10 h-10 rounded-full border-2 border-background object-cover" />
 
-              )}
+                )}
             </div>
             <div>
               <div className="flex items-center gap-1">
                 {[0, 1, 2, 3, 4]?.map((i) =>
-                <Icon key={i} name="StarIcon" size={14} variant="solid" className="text-amber-400" />
+                  <Icon key={i} name="StarIcon" size={14} variant="solid" className="text-amber-400" />
                 )}
               </div>
               <p className="text-xs text-muted-foreground mt-0.5">
@@ -130,7 +130,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}>
-          
+
           <div className="grid grid-cols-12 grid-rows-6 gap-3 h-full w-full">
             {/* Main tall image */}
             <div className="col-span-5 row-span-6 rounded-3xl overflow-hidden relative group cursor-pointer shadow-strong">

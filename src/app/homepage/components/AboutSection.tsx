@@ -93,7 +93,7 @@ export default function AboutSection() {
             transition={{ duration: 0.8, delay: 0.2 }}>
 
             <AppImage
-              src="https://img.rocket.new/generatedImages/rocket_gen_img_16a9d29c5-1773648814205.png"
+              src="/assets/images/installation-team.png"
               alt="Keepexa Interior installation team working professionally on UPVC window fitting, clean white coveralls, bright workshop environment"
               fill
               className="object-cover" />

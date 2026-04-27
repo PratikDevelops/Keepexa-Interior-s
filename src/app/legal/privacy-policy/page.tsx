@@ -244,7 +244,7 @@ export default function PrivacyPolicyPage() {
             </a>
           </p>
           <div className="flex items-center gap-3">
-            <Link href="/terms" className="text-xs font-600 text-muted-foreground hover:text-primary transition-colors">
+            <Link href="/legal/terms-of-service" className="text-xs font-600 text-muted-foreground hover:text-primary transition-colors">
               Terms of Service →
             </Link>
             <span className="w-px h-3 bg-border/60" />
