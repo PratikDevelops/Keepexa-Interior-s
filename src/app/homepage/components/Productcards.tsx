@@ -201,7 +201,7 @@ const products: Product[] = [
 const categories: Category[] = ['All', 'Casement', 'Sliding', 'Tilt & Turn', 'Fixed', 'Bay & Bow', 'Louvre'];
 
 /* ─────────────────────────────────────────────
-   Badge styles — original design-system tokens
+   Badge styles
 ───────────────────────────────────────────── */
 const badgeStyles: Record<string, string> = {
   popular: 'bg-primary/12 text-primary border-primary/20',
@@ -239,13 +239,15 @@ function Stars({ rating, size = 'sm' }: { rating: number; size?: 'sm' | 'xs' }) 
 }
 
 /* ─────────────────────────────────────────────
-   Spec pill
+   ✅ FIX: SpecPill — solid background, strong text contrast
+   Old: bg-secondary/70 with text-primary (washed out over images)
+   New: bg-background text-foreground for value, muted label
 ───────────────────────────────────────────── */
 function SpecPill({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl bg-secondary/70">
-      <span className="text-xs font-800 text-primary">{value}</span>
-      <span className="text-[9px] font-500 text-muted-foreground uppercase tracking-widest mt-0.5">{label}</span>
+    <div className="flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl bg-background border border-border/60">
+      <span className="text-xs font-bold text-foreground">{value}</span>
+      <span className="text-[9px] font-semibold text-muted-foreground uppercase tracking-widest mt-0.5">{label}</span>
     </div>
   );
 }
@@ -296,9 +298,9 @@ function FeaturedCard({ product, inView }: { product: Product; inView: boolean }
           fill
           className={`object-cover transition-transform duration-1000 ease-out ${hovered ? 'scale-105' : 'scale-100'}`}
         />
-        {/* Gradient: opaque bg-card on left, transparent right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-card via-card/88 to-card/15" />
-        <div className="absolute inset-0 bg-gradient-to-t from-card/35 via-transparent to-transparent" />
+        {/* ✅ FIX: Stronger gradient — from-card (fully opaque) ensures left content is always legible */}
+        <div className="absolute inset-0 bg-gradient-to-r from-card via-card/92 to-card/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-card/40 via-transparent to-transparent" />
       </div>
 
       {/* Decorative ruled lines */}
@@ -313,10 +315,11 @@ function FeaturedCard({ product, inView }: { product: Product; inView: boolean }
 
           {/* Eyebrow row */}
           <div className="flex items-center gap-2.5 flex-wrap">
-            <span className="text-xs font-600 text-muted-foreground bg-secondary/80 px-2.5 py-1 rounded-lg border border-border/50">
+            {/* ✅ FIX: bg-background/95 + text-foreground for full legibility */}
+            <span className="text-xs font-semibold text-foreground bg-background/95 px-2.5 py-1 rounded-lg border border-border/60 shadow-sm">
               {product.category}
             </span>
-            <span className="text-xs font-600 text-accent bg-accent/10 px-2.5 py-1 rounded-lg border border-accent/15">
+            <span className="text-xs font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-lg border border-accent/20 shadow-sm">
               Featured
             </span>
             {product.badge && <Badge label={product.badge.label} variant={product.badge.variant} />}
@@ -325,19 +328,25 @@ function FeaturedCard({ product, inView }: { product: Product; inView: boolean }
           {/* Headline + description */}
           <div className="flex flex-col gap-3">
             <div>
-              <h3 className="text-2xl sm:text-3xl font-800 text-foreground tracking-tight leading-none">
+              {/* ✅ FIX: text-shadow keeps heading crisp over any image bleed-through */}
+              <h3
+                className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight leading-none"
+                style={{ textShadow: '0 1px 8px rgba(0,0,0,0.10)' }}
+              >
                 {product.name}
               </h3>
-              <p className="mt-2 text-sm font-600 text-primary">{product.tagline}</p>
+              <p className="mt-2 text-sm font-semibold text-primary">{product.tagline}</p>
             </div>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">{product.description}</p>
+            {/* ✅ FIX: text-foreground/85 instead of text-muted-foreground for better contrast on card bg */}
+            <p className="text-sm text-foreground/85 leading-relaxed max-w-sm">{product.description}</p>
 
             {/* Highlight chips */}
             <div className="flex flex-wrap gap-2 mt-1">
               {product.highlights.map((h) => (
+                // ✅ FIX: bg-background/95 + text-foreground so chips are always readable
                 <span
                   key={h}
-                  className="inline-flex items-center gap-1.5 text-xs text-muted-foreground bg-secondary/60 border border-border/50 px-3 py-1.5 rounded-full"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground bg-background/95 border border-border/70 px-3 py-1.5 rounded-full shadow-sm"
                 >
                   <Icon name="CheckIcon" size={9} className="text-primary shrink-0" />
                   {h}
@@ -349,8 +358,8 @@ function FeaturedCard({ product, inView }: { product: Product; inView: boolean }
           {/* Price + CTA */}
           <div className="flex items-center gap-6 pt-4 border-t border-border/50 flex-wrap">
             <div>
-              <p className="text-[9px] font-700 text-muted-foreground uppercase tracking-[0.18em]">Starting from</p>
-              <p className="text-2xl font-800 text-foreground tracking-tight leading-none mt-0.5">
+              <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-[0.18em]">Starting from</p>
+              <p className="text-2xl font-extrabold text-foreground tracking-tight leading-none mt-0.5">
                 {product.startingPrice}
               </p>
               <p className="text-xs text-muted-foreground mt-0.5">{product.priceUnit}</p>
@@ -358,7 +367,7 @@ function FeaturedCard({ product, inView }: { product: Product; inView: boolean }
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-1.5">
                 <Stars rating={product.rating} />
-                <span className="text-xs font-600 text-foreground">{product.rating}</span>
+                <span className="text-xs font-semibold text-foreground">{product.rating}</span>
                 <span className="text-xs text-muted-foreground">({product.reviews})</span>
               </div>
               <Link href={product.href} className="btn-primary">
@@ -371,7 +380,8 @@ function FeaturedCard({ product, inView }: { product: Product; inView: boolean }
 
         {/* Right: spec cluster — bottom-right corner */}
         <div className="md:col-span-6 lg:col-span-7 hidden md:flex items-end justify-end p-8 lg:p-10">
-          <div className="flex items-center gap-1 bg-card/55 backdrop-blur-sm border border-border/40 rounded-2xl p-1.5">
+          {/* ✅ FIX: bg-background (fully opaque) so spec values are always crisp */}
+          <div className="flex items-center gap-1 bg-background border border-border/60 rounded-2xl p-1.5 shadow-lg">
             {[
               { label: 'U-Value', value: `${product.uValue} W/m²K` },
               { label: 'Acoustic', value: product.acoustic },
@@ -421,21 +431,21 @@ function StandardCard({ product, index, inView }: { product: Product; index: num
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
 
-        {/* Spec strip slides up */}
+        {/* ✅ FIX: Spec strip — bg-background (fully opaque), text-foreground values */}
         <AnimatePresence>
           {hovered && (
             <motion.div
-              className="absolute bottom-0 left-0 right-0 flex items-center justify-around px-3 py-2.5 bg-background/92 backdrop-blur-sm border-t border-border/40"
+              className="absolute bottom-0 left-0 right-0 flex items-center justify-around px-3 py-2.5 bg-background border-t border-border/60"
               initial={{ y: '100%', opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: '100%', opacity: 0 }}
               transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
             >
-              <SpecPill label="U-Value" value={product.uValue} />
+              <SpecPill label="U-Value" value={`${product.uValue} W/m²K`} />
               <div className="w-px h-7 bg-border/60" />
               <SpecPill label="Acoustic" value={product.acoustic} />
               <div className="w-px h-7 bg-border/60" />
-              <SpecPill label="Profiles" value={product.profiles} />
+              <SpecPill label="Profile" value={product.profiles} />
             </motion.div>
           )}
         </AnimatePresence>
@@ -443,7 +453,8 @@ function StandardCard({ product, index, inView }: { product: Product; index: num
         {/* Top badges */}
         <div className="absolute top-3 left-3 right-3 flex items-start justify-between">
           {product.badge ? <Badge label={product.badge.label} variant={product.badge.variant} /> : <span />}
-          <span className="text-xs font-600 text-foreground bg-background/80 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-border/30">
+          {/* ✅ FIX: bg-background/95 + text-foreground for category pill over image */}
+          <span className="text-xs font-semibold text-foreground bg-background/95 px-2.5 py-1 rounded-lg border border-border/50 shadow-sm">
             {product.category}
           </span>
         </div>
@@ -452,13 +463,13 @@ function StandardCard({ product, index, inView }: { product: Product; index: num
       {/* Body */}
       <div className="flex flex-col flex-1 px-5 pt-4 pb-5 gap-3">
         <div>
-          <h3 className="text-base font-700 text-foreground leading-tight">{product.name}</h3>
+          <h3 className="text-base font-bold text-foreground leading-tight">{product.name}</h3>
           <p className="text-xs text-muted-foreground mt-1 leading-snug">{product.tagline}</p>
         </div>
 
         <div className="flex items-center gap-1.5">
           <Stars rating={product.rating} size="xs" />
-          <span className="text-xs font-600 text-foreground">{product.rating}</span>
+          <span className="text-xs font-semibold text-foreground">{product.rating}</span>
           <span className="text-xs text-muted-foreground">· {product.reviews} reviews</span>
         </div>
 
@@ -475,8 +486,8 @@ function StandardCard({ product, index, inView }: { product: Product; index: num
 
         <div className="flex items-center justify-between mt-auto pt-3 border-t border-border/50">
           <div>
-            <p className="text-[9px] font-600 text-muted-foreground uppercase tracking-widest">From</p>
-            <p className="text-base font-800 text-foreground leading-none mt-0.5">{product.startingPrice}</p>
+            <p className="text-[9px] font-semibold text-muted-foreground uppercase tracking-widest">From</p>
+            <p className="text-base font-extrabold text-foreground leading-none mt-0.5">{product.startingPrice}</p>
             <p className="text-[10px] text-muted-foreground mt-0.5">{product.priceUnit}</p>
           </div>
           <Link href={product.href} className="btn-primary text-xs py-2 px-3.5">
@@ -521,7 +532,7 @@ export default function ProductCards() {
             <span className="section-label">Our Products</span>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-5">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-800 tracking-tight text-foreground leading-tight max-w-lg">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground leading-tight max-w-lg">
               Every window type.<br className="hidden sm:block" />
               <span className="text-muted-foreground"> One standard of quality.</span>
             </h2>
@@ -582,7 +593,7 @@ export default function ProductCards() {
           <div className="absolute -bottom-16 -right-8 w-56 h-56 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative text-center sm:text-left">
-            <p className="text-base font-700 text-foreground">Not sure which window is right for your home?</p>
+            <p className="text-base font-bold text-foreground">Not sure which window is right for your home?</p>
             <p className="text-sm text-muted-foreground mt-1">
               Our specialists will visit, assess, and recommend — completely free.
             </p>
@@ -594,7 +605,7 @@ export default function ProductCards() {
             </Link>
             <Link
               href="/book-survey"
-              className="px-5 py-2.5 rounded-xl border border-border/80 text-sm font-600 text-foreground hover:bg-secondary/60 transition-colors"
+              className="px-5 py-2.5 rounded-xl border border-border/80 text-sm font-semibold text-foreground hover:bg-secondary/60 transition-colors"
             >
               Book Survey
             </Link>

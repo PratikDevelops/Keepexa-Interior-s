@@ -42,7 +42,7 @@ export default function ContactSection() {
 
             <div className="flex flex-col gap-3 sm:gap-4">
               {[
-                { icon: 'PhoneIcon', label: 'Phone', value: '++91 73710 73711', sub: 'Mon–Sat 9am–7pm IST' },
+                { icon: 'PhoneIcon', label: 'Phone', value: '+91 73710 73711', sub: 'Mon–Sat 9am–7pm IST' },
                 { icon: 'EnvelopeIcon', label: 'Email', value: 'admin@keepexa.in', sub: 'Response within 2 hours' },
                 { icon: 'MapPinIcon', label: 'Head Office', value: 'Maruti Niwas, BSNL colony, Opp IIT Main Gate, Powai, Mumbai – 400076, Maharashtra', sub: 'Open Mon–Sat, appointment preferred' },
               ].map((item) => (

@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 
 /* ─────────────────────────────────────────────
    Types
@@ -332,7 +334,9 @@ export default function BookSurveyPage() {
   };
 
   return (
-    <main className="min-h-screen bg-background">
+  <>
+      <main className="min-h-screen bg-background">
+          <Header/>
       {/* ── Top nav breadcrumb ── */}
       <div className="border-b border-border/50 px-5 py-3.5 flex items-center gap-2 text-xs text-muted-foreground">
         <Link href="/homepage" className="hover:text-primary transition-colors">Home</Link>
@@ -504,5 +508,7 @@ export default function BookSurveyPage() {
         </motion.aside>
       </div>
     </main>
+    <Footer/>
+  </>
   );
 }

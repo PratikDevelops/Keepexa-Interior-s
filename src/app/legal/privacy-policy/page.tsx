@@ -122,7 +122,7 @@ const sections: Section[] = [
     title: 'Contact Us',
     content: [
       {
-        body: 'If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact our Data Protection Officer: privacy@Keepexa Interior.com · +91 73710 73711 · Keepexa Interior Pvt. Ltd., Plot 42, MIDC Chakan, Mumbai – 410501, Maharashtra, India.',
+        body: 'If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact our Data Protection Officer: privacy@Keepexa Interior.com · +91 73710 73711 · Maruti Niwas, BSNL colony, Opp IIT Main Gate, Powai, Mumbai – 400076, Maharashtra.',
       },
     ],
   },

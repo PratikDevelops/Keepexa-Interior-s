@@ -22,7 +22,7 @@ const sections: Section[] = [
     title: 'Acceptance of Terms',
     content: [
       {
-        body: 'By accessing Keepexa Interior.com, requesting a quote, placing an order, or using any of our services, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, please do not use our services. These Terms constitute a legally binding agreement between you and Keepexa Interior Pvt. Ltd., a company incorporated under the Companies Act, 2013, with its registered office at Plot 42, MIDC Chakan, Mumbai – 410501, Maharashtra.',
+        body: 'By accessing Keepexa Interior.com, requesting a quote, placing an order, or using any of our services, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, please do not use our services. These Terms constitute a legally binding agreement between you and Keepexa Interior Pvt. Ltd., a company incorporated under the Companies Act, 2013, with its registered office at Maruti Niwas, BSNL colony, Opp IIT Main Gate, Powai, Mumbai – 400076, Maharashtra.',
       },
     ],
   },
@@ -158,7 +158,7 @@ const sections: Section[] = [
     title: 'Contact',
     content: [
       {
-        body: 'For any questions regarding these Terms, please contact: legal@Keepexa Interior.com · Keepexa Interior Pvt. Ltd., Plot 42, MIDC Chakan, Mumbai – 410501, Maharashtra, India · CIN: U28990MH2020PTC123456 · GST: 27AABCS1429B1ZB.',
+        body: 'For any questions regarding these Terms, please contact: legal@Keepexa Interior.com · Maruti Niwas, BSNL colony, Opp IIT Main Gate, Powai, Mumbai – 400076, Maharashtra.',
       },
     ],
   },

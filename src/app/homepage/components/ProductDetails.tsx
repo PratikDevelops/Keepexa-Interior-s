@@ -556,17 +556,6 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
   return (
     <main className="min-h-screen mt-[100px] bg-background">
 
-      {/* ── Breadcrumb ── */}
-      {/* <div className="bg-secondary/40 border-b mt-[10px] border-border/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center gap-2 text-xs text-muted-foreground">
-          <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
-          <span className="opacity-30">/</span>
-          <Link href="/#products" className="hover:text-foreground transition-colors">Products</Link>
-          <span className="opacity-30">/</span>
-          <span className="text-foreground font-medium">{product.name}</span>
-        </div>
-      </div> */}
-
       {/* ── HERO ── */}
       <section ref={heroRef} className="relative overflow-hidden bg-background">
 
@@ -578,8 +567,8 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
             fill
             className="object-cover"
           />
-          {/* Layered gradients for text legibility */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background/98 via-background/80 to-background/20" />
+          {/* ✅ FIX: Stronger left gradient so text always sits on a legible base */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/30" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
         </div>
 
@@ -597,14 +586,15 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                 animate={heroView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.05 }}
               >
+                {/* ✅ FIX: Opaque white background on pills for legibility */}
                 <Link
                   href="/#products"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors bg-secondary/80 border border-border/50 px-3 py-1.5 rounded-full"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground hover:text-foreground transition-colors bg-background/95 border border-border/70 px-3 py-1.5 rounded-full shadow-sm"
                 >
                   <Icon name="ArrowLeftIcon" size={11} />
                   All Products
                 </Link>
-                <span className="text-xs font-semibold text-muted-foreground bg-secondary/80 border border-border/50 px-3 py-1.5 rounded-full">
+                <span className="text-xs font-semibold text-foreground bg-background/95 border border-border/70 px-3 py-1.5 rounded-full shadow-sm">
                   {product.category}
                 </span>
                 {product.badge && <Badge label={product.badge.label} variant={product.badge.variant} />}
@@ -616,7 +606,11 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                 animate={heroView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.02]">
+                {/* ✅ FIX: Subtle text-shadow keeps heading crisp on any image */}
+                <h1
+                  className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.02]"
+                  style={{ textShadow: '0 2px 12px rgba(0,0,0,0.12)' }}
+                >
                   {product.name}
                 </h1>
                 <p className="mt-3 text-base sm:text-lg font-semibold text-primary leading-snug">
@@ -625,8 +619,10 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
               </motion.div>
 
               {/* Description */}
+              {/* ✅ FIX: text-foreground/90 instead of text-muted-foreground for hero contrast */}
               <motion.p
-                className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-lg"
+                className="text-sm sm:text-base text-foreground/90 leading-relaxed max-w-lg"
+                style={{ textShadow: '0 1px 8px rgba(0,0,0,0.10)' }}
                 initial={{ opacity: 0, y: 14 }}
                 animate={heroView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.15 }}
@@ -643,7 +639,8 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
               >
                 <Stars rating={product.rating} />
                 <span className="text-sm font-bold text-foreground">{product.rating}</span>
-                <span className="text-sm text-muted-foreground">({product.reviews} verified reviews)</span>
+                {/* ✅ FIX: text-foreground/80 instead of text-muted-foreground */}
+                <span className="text-sm text-foreground/80">({product.reviews} verified reviews)</span>
               </motion.div>
 
               {/* Highlight chips */}
@@ -654,9 +651,10 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
                 transition={{ duration: 0.5, delay: 0.25 }}
               >
                 {product.highlights.map((h) => (
+                  // ✅ FIX: bg-background/95 (nearly opaque) + shadow-md for chip legibility
                   <span
                     key={h}
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground bg-background/80 backdrop-blur-sm border border-border/60 px-3 py-1.5 rounded-full shadow-sm"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground bg-background/95 backdrop-blur-sm border border-border/80 px-3 py-1.5 rounded-full shadow-md"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                     {h}
