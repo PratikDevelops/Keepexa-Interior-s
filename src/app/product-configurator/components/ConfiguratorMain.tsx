@@ -376,7 +376,7 @@ function QuoteForm({
               <div>
                 <h3 className="text-xl font-800 text-foreground">Quote request sent!</h3>
                 <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                  Dhanyavaad, {form.name || 'there'}! A Keepexa Interior specialist will contact you within 2 hours
+                  Thank you, {form.name || 'there'}! A Keepexa Interior specialist will contact you within 2 hours
                   to confirm your quote and arrange a free home survey in {form.city || 'your city'}.
                 </p>
               </div>
